@@ -1,4 +1,6 @@
-﻿internal class Wall : LevelElement
+﻿namespace DungeonCrawler.Elements
+
+internal class Wall : LevelElement
 {
     public Wall()
     {

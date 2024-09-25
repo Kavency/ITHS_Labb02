@@ -1,4 +1,5 @@
-﻿abstract internal class LevelElement
+﻿namespace DungeonCrawler.Elements;
+abstract internal class LevelElement
 {
     public int xPosition { get; set; }
     public int yPosition { get; set; }

@@ -1,4 +1,6 @@
-﻿internal class Snake : Enemy
+﻿namespace DungeonCrawler.Elements;
+
+internal class Snake : Enemy
 {
 
 }
