@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Folder Include="Levels\" />
+    <Folder Include="Elements\" />
+    <Folder Include="GameLogic\" />
   </ItemGroup>
 
 </Project>
