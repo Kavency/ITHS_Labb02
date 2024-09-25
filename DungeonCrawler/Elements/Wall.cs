@@ -1,11 +1,12 @@
 ﻿namespace DungeonCrawler.Elements
-
-internal class Wall : LevelElement
 {
-    public Wall()
+    internal class Wall : LevelElement
     {
-        mapSymbol = '#';
-        symbolColour = ConsoleColor.Gray;
+        public Wall()
+        {
+            mapSymbol = '#';
+            symbolColour = ConsoleColor.Gray;
+        }
     }
 }
 
