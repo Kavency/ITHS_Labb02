@@ -4,8 +4,8 @@
     {
         public Wall()
         {
-            mapSymbol = '#';
-            symbolColour = ConsoleColor.Gray;
+            MapSymbol = '#';
+            SymbolColour = ConsoleColor.Gray;
         }
     }
 }
