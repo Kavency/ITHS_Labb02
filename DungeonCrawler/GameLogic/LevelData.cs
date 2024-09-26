@@ -16,10 +16,8 @@ namespace DungeonCrawler.GameLogic
             {
                 int characterAsInt;
 
-                // TODO: Clean up this mess!
                 while ((characterAsInt = reader.Read()) != -1)
                 {
-                    //Console.Write((char)characterAsInt);
                     AddMapElementToListOfElements(characterAsInt);
                 }
             }
