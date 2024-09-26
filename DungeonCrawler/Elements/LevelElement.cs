@@ -1,15 +1,15 @@
 ﻿namespace DungeonCrawler.Elements;
 abstract internal class LevelElement
 {
-    public int xPosition { get; set; }
-    public int yPosition { get; set; }
-    public char mapSymbol { get; set; }
-    public ConsoleColor symbolColour { get; set; }
+    public int XPosition { get; set; }
+    public int YPosition { get; set; }
+    public char MapSymbol { get; set; }
+    public ConsoleColor SymbolColour { get; set; }
 
     public void Draw()
     {
-        Console.SetCursorPosition(xPosition, yPosition);
-        Console.ForegroundColor = symbolColour;
-        Console.Write(mapSymbol);
+        Console.SetCursorPosition(XPosition, YPosition);
+        Console.ForegroundColor = SymbolColour;
+        Console.Write(MapSymbol);
     }
 }
