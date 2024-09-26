@@ -1,4 +1,4 @@
-﻿namespace DungeonCrawler.Elements
+﻿namespace DungeonCrawler.GameLogic
 {
     internal class Dice
     {
