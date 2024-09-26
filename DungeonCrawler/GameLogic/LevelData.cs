@@ -47,13 +47,13 @@ namespace DungeonCrawler.GameLogic
                     SetElementPosition(snake);
                     snake.Draw();
                     break;
-                //case 64:
-                //    Player player = new() { MapSymbol = (char)characterAsInt };
-                //    elements.Add(player);
-                //    (player.XPosition, player.YPosition) = Console.GetCursorPosition();
-                //    SetElementPosition(player);
-                //    player.Draw();
-                //    break;
+                case 64:
+                    Player player = new() { MapSymbol = (char)characterAsInt };
+                    _elements.Add(player);
+                    (player.XPosition, player.YPosition) = Console.GetCursorPosition();
+                    SetElementPosition(player);
+                    player.Draw();
+                    break;
                 default:
                     Console.Write((char)characterAsInt);
                     break;
