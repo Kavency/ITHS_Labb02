@@ -6,8 +6,9 @@ namespace DungeonCrawler
     {
         static void Main(string[] args)
         {
-            // TODO: Make path relate....
-            LevelData.Load("C:\\Users\\Kavency\\source\\repos\\Kavency\\ITHS_Labb02\\DungeonCrawler\\Levels\\Level1.txt");
+            string filePath = @"Levels\TestLevel.txt";
+            
+            LevelData.Load(filePath);
             Console.ReadLine();
         }
     }
