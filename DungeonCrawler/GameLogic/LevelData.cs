@@ -1,6 +1,4 @@
 ﻿using DungeonCrawler.Elements;
-using System.Numerics;
-using System.Xml.Linq;
 
 namespace DungeonCrawler.GameLogic
 {
@@ -11,7 +9,6 @@ namespace DungeonCrawler.GameLogic
 
         static public void Load(string fileName)
         {
-            // TODO: Refactor?
             using (StreamReader reader = new StreamReader(fileName))
             {
                 int characterAsInt;
