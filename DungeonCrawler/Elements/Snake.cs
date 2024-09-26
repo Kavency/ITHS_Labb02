@@ -8,6 +8,7 @@ namespace DungeonCrawler.Elements
         {
             Name = NameProvider.GetName();
             Health = 100;
+            SymbolColour = ConsoleColor.Red;
         }
         public override void Update()
         {
