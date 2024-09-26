@@ -7,9 +7,9 @@ namespace DungeonCrawler
         static void Main(string[] args)
         {
             string filePath = @"Levels\TestLevel.txt";
-            
             LevelData.Load(filePath);
-            Console.ReadLine();
+
+            Game game = new();
         }
     }
 }
