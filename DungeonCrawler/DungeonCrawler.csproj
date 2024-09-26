@@ -11,4 +11,13 @@
     <Folder Include="Levels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Levels\Level1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Levels\TestLevel.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
