@@ -44,7 +44,6 @@ namespace DungeonCrawler.GameLogic
                     break;
                 case 64:
                     Player player = new() { MapSymbol = (char)characterAsInt };
-                    //player.MapSymbol = (char)characterAsInt;
                     _elements.Add(player);
                     (player.XPosition, player.YPosition) = Console.GetCursorPosition();
                     SetElementPosition(player);
