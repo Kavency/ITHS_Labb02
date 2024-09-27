@@ -5,7 +5,7 @@ namespace DungeonCrawler.GameLogic
     static internal class LevelData
     {
         static private List<LevelElement> _elements = new();
-        static public List<LevelElement> Elements { get; }
+        static public List<LevelElement> Elements { get { return _elements; } }
 
         static public void Load(string fileName)
         {
