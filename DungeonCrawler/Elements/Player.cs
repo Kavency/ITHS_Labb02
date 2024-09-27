@@ -48,11 +48,5 @@ namespace DungeonCrawler.Elements
                 }
             }
         }
-        public void Update()
-        {
-            Console.SetCursorPosition(XPosition, YPosition);
-            Console.ForegroundColor = SymbolColour;
-            Console.Write(MapSymbol);
-        }
     }
 }

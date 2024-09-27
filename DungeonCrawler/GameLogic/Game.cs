@@ -23,7 +23,7 @@ namespace DungeonCrawler.GameLogic
             while (true)
             {
                 player.PlayerMovement();
-                player.Update();
+                player.Draw();
                 Thread.Sleep(250);
                 // Game Loop
             }

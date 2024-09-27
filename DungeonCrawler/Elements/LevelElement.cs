@@ -11,5 +11,6 @@ abstract internal class LevelElement
         Console.SetCursorPosition(XPosition, YPosition);
         Console.ForegroundColor = SymbolColour;
         Console.Write(MapSymbol);
+        Console.ForegroundColor = ConsoleColor.Gray;
     }
 }
