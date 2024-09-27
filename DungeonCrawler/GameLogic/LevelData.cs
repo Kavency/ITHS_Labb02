@@ -5,7 +5,7 @@ namespace DungeonCrawler.GameLogic
     static internal class LevelData
     {
         static private List<LevelElement> _elements = new();
-        static public List<LevelElement> Elements { get { return _elements; } }
+        static public List<LevelElement> MapElements { get { return _elements; } }
 
         static public void Load(string fileName)
         {
@@ -44,6 +44,7 @@ namespace DungeonCrawler.GameLogic
                     break;
                 case 64:
                     Player player = new() { MapSymbol = (char)characterAsInt };
+                    //player.MapSymbol = (char)characterAsInt;
                     _elements.Add(player);
                     (player.XPosition, player.YPosition) = Console.GetCursorPosition();
                     SetElementPosition(player);
