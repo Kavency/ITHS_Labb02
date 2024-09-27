@@ -10,7 +10,7 @@
   + Klassen “Wall” ärver direkt av “LevelElement”.
   + Klasserna “Rat” och “Snake” ärver direkt av “Enemy” (indirekt av “LevelElement”).
 + Spelaren ska kunna flytta ett steg per omgång (upp/ner/höger/vänster).
-+ Inte genom väggar eller fiender.
+  + Inte genom väggar eller fiender.
 + Spelaren har ett synfält som sträcker sig i en radie 5 steg bort från spelarens position.
   + Fiender som är utanför synfältet syns ej (men uppdateras ändå varje omgång).
   + Väggarna försvinner inte när man väl upptäckt dem första gången.
