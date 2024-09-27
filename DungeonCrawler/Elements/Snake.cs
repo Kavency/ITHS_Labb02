@@ -4,6 +4,7 @@ namespace DungeonCrawler.Elements
 {
     internal class Snake : Enemy
     {
+        // Giftormar?
         public Snake()
         {
             Name = NameProvider.GetName();
