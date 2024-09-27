@@ -2,7 +2,8 @@
 ## Dungeon Crawler Deluxe
 
 ### För godkänt:
-+ Appen ska vara kompatibel med, och kunna läsa in filen “Level1.txt”, och korrekt hantera de olika elementen enligt beskrivningen i labben.
++ Appen ska vara kompatibel med, och kunna läsa in filen “Level1.txt”.
+  + Korrekt hantera de olika elementen enligt beskrivningen i labben.
 + Fiendetyperna rat och snakes ska finnas.
   + Ha unika stats.
   + Deras beteenden (rörelsemönster) ska fungera enligt beskrivningen i labben.
