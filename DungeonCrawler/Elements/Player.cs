@@ -16,6 +16,7 @@ namespace DungeonCrawler.Elements
             Health = 100;
             VisibleColour = ConsoleColor.Yellow;
             MapSymbol = '@';
+            IsVisible = true;
         }
 
         public void PlayerMovement()

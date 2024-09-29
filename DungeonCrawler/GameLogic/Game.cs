@@ -22,7 +22,8 @@ namespace DungeonCrawler.GameLogic
         {
             while (true)
             {
-                // Rita upp kartan igen
+                // TODO: Flytta till egen metod?.
+                // Rita upp kartan igen.
                 foreach (var item in LevelData.MapElements)
                 {
                     if (item is Wall wall)
@@ -38,20 +39,22 @@ namespace DungeonCrawler.GameLogic
                         Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                         wall.Draw();
                     }
-                }
-
-                player.PlayerMovement();
-                player.Draw();
-                Thread.Sleep(50);
-                foreach (var item in LevelData.MapElements)
-                {
-                    if (item is Rat rat)
+                    else if (item is Rat rat)
                     {
                         DistanceController.CheckDistance(player, rat);
                         rat.Movement();
                         rat.Draw();
                     }
+                    else if (item is Snake snake)
+                    {
+                        DistanceController.CheckDistance(player, snake);
+                        //snake.Movement();
+                        snake.Draw();
+                    }
                 }
+
+                player.PlayerMovement();
+                player.Draw();
                 Thread.Sleep(50);
             }
         }

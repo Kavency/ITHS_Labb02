@@ -12,9 +12,12 @@ abstract internal class LevelElement
 
     public virtual void Draw()
     {
+        if (IsVisible)
+            Console.ForegroundColor = VisibleColour;
+        else
+            Console.ForegroundColor = InVisibleColour;
+        
         Console.SetCursorPosition(XPosition, YPosition);
-        Console.ForegroundColor = VisibleColour;
         Console.Write(MapSymbol);
-        //Console.ForegroundColor = ConsoleColor.Gray;
     }
 }
