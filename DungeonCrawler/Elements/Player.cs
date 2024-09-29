@@ -7,13 +7,9 @@ namespace DungeonCrawler.Elements
         public string Name { get; set; }
         public int Health { get; set; }
 
-        enum Directions { North, South, West, East }
         ConsoleKeyInfo keyInfo;
         ConsoleKey keyPressed;
         
-        LevelElement collisionObject;
-
-
         public Player()
         {
             Name = NameProvider.GetName();
@@ -34,36 +30,36 @@ namespace DungeonCrawler.Elements
                 switch (keyPressed)
                 {
                     case ConsoleKey.W:
-                        if (CheckForCollision(Directions.North))
+                        if (CollisionHandler.CheckForCollision(Directions.North, this))
                         {
-                            Collide(collisionObject);
+                            CollisionHandler.Collide();
                             break;
                         }
                         else
                             this.YPosition--;
                         break;
                     case ConsoleKey.S:
-                        if (CheckForCollision(Directions.South))
+                        if (CollisionHandler.CheckForCollision(Directions.South, this))
                         {
-                            Collide(collisionObject);
+                            CollisionHandler.Collide();
                             break;
                         }
                         else
                             this.YPosition++;
                         break;
                     case ConsoleKey.A:
-                        if (CheckForCollision(Directions.West))
+                        if (CollisionHandler.CheckForCollision(Directions.West, this))
                         {
-                            Collide(collisionObject);
+                            CollisionHandler.Collide();
                             break;
                         }
                         else
                             this.XPosition--;
                         break;
                     case ConsoleKey.D:
-                        if (CheckForCollision(Directions.East))
+                        if (CollisionHandler.CheckForCollision(Directions.East, this))
                         {
-                            Collide(collisionObject);
+                            CollisionHandler.Collide();
                             break;
                         }
                         else
@@ -72,65 +68,6 @@ namespace DungeonCrawler.Elements
                     default:
                         break;
                 }
-            }
-            bool CheckForCollision(Enum directionMoved)
-            {
-                if (Directions.North.Equals(directionMoved))
-                {
-                    var item = LevelData.MapElements.Find(item => item.XPosition == this.XPosition && item.YPosition == this.YPosition - 1);
-
-                    if (item != null)
-                    {
-                        collisionObject = item;
-                        return true;
-                    }
-                    else
-                        return false;
-                }
-                else if (Directions.South.Equals(directionMoved))
-                {
-                    var item = LevelData.MapElements.Find(item => item.XPosition == this.XPosition && item.YPosition == this.YPosition + 1);
-
-                    if (item != null)
-                    {
-                        collisionObject = item;
-                        return true;
-                    }
-                    else
-                        return false;
-
-                }
-                else if (Directions.West.Equals(directionMoved))
-                {
-                    var item = LevelData.MapElements.Find(item => item.YPosition == this.YPosition && item.XPosition == this.XPosition - 1);
-
-                    if (item != null)
-                    {
-                        collisionObject = item;
-                        return true;
-                    }
-                    else
-                        return false;
-
-                }
-                else //if (Directions.East.Equals(direction))
-                {
-                    var item = LevelData.MapElements.Find(item => item.YPosition == this.YPosition && item.XPosition == this.XPosition + 1);
-
-                    if (item != null)
-                    {
-                        collisionObject = item;
-                        return true;
-                    }
-                    else
-                        return false;
-                }
-                
-            }
-            void Collide(LevelElement objectType)
-            {
-                Console.SetCursorPosition(1, 22);
-                Console.WriteLine(objectType);
             }
         }
     }
