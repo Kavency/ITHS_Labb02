@@ -87,6 +87,9 @@ namespace DungeonCrawler.Elements
                                 isKeyPressed = true;
                                 break;
                             }
+                        case ConsoleKey.Spacebar:
+                            isKeyPressed = true;
+                            break;
                     }
                 }
             }
