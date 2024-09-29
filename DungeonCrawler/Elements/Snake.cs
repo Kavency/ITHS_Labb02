@@ -13,7 +13,7 @@ namespace DungeonCrawler.Elements
 
             Name = NameProvider.GetName();
             Health = 25;
-            SymbolColour = ConsoleColor.Red;
+            VisibleColour = ConsoleColor.Red;
             MapSymbol = 's';
         }
         public override void Update()

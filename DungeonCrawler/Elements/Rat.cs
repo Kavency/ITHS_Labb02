@@ -12,8 +12,12 @@ namespace DungeonCrawler.Elements
 
             Name = NameProvider.GetName();
             Health = 10;
-            SymbolColour = ConsoleColor.Red;
+            VisibleColour = ConsoleColor.Red;
             MapSymbol = 'r';
+        }
+        public override void Update()
+        {
+            Movement();
         }
 
         public void Movement()
@@ -37,9 +41,6 @@ namespace DungeonCrawler.Elements
                 else
                     this.XPosition++;
             }
-        }
-        public override void Update()
-        {
         }
     }
 }
