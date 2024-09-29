@@ -14,7 +14,7 @@ namespace DungeonCrawler.GameLogic
             
             string filePath = @"Levels\Level1.txt";
             LevelData.Load(filePath);
-            player = (Player)LevelData.MapElements.Find(find => find.MapSymbol == '@');
+            player = (Player)LevelData.MapElements.Find(findPlayer => findPlayer.MapSymbol == '@');
 
             
         }
