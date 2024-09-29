@@ -62,7 +62,7 @@ namespace DungeonCrawler.GameLogic
         public static void Collide()
         {
             Console.SetCursorPosition(1, 22);
-            Console.WriteLine(collisionObject + "             ");
+            //Console.WriteLine(collisionObject + "             ");
         }
 
         public static void ClearOldPosition(LevelElement element)

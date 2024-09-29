@@ -14,7 +14,7 @@ namespace DungeonCrawler.Elements
         {
             Name = NameProvider.GetName();
             Health = 100;
-            SymbolColour = ConsoleColor.Yellow;
+            VisibleColour = ConsoleColor.Yellow;
             MapSymbol = '@';
         }
 
@@ -40,7 +40,7 @@ namespace DungeonCrawler.Elements
                             }
                             else
                             {
-                                ClearPreviousPosition();
+                                CollisionHandler.ClearOldPosition(this);
                                 this.YPosition--;
                                 isKeyPressed = true;
                                 break;
@@ -54,7 +54,7 @@ namespace DungeonCrawler.Elements
                             }
                             else
                             {
-                                ClearPreviousPosition();
+                                CollisionHandler.ClearOldPosition(this);
                                 this.YPosition++;
                                 isKeyPressed = true;
                                 break;
@@ -68,7 +68,7 @@ namespace DungeonCrawler.Elements
                             }
                             else
                             {
-                                ClearPreviousPosition();
+                                CollisionHandler.ClearOldPosition(this);
                                 this.XPosition--;
                                 isKeyPressed = true;
                                 break;
@@ -82,7 +82,7 @@ namespace DungeonCrawler.Elements
                             }
                             else
                             {
-                                ClearPreviousPosition();
+                                CollisionHandler.ClearOldPosition(this);
                                 this.XPosition++;
                                 isKeyPressed = true;
                                 break;
@@ -92,12 +92,6 @@ namespace DungeonCrawler.Elements
                             break;
                     }
                 }
-            }
-
-            void ClearPreviousPosition()
-            {
-                Console.SetCursorPosition(XPosition, YPosition);
-                Console.Write(" ");
             }
         }
     }
