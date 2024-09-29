@@ -15,9 +15,31 @@ namespace DungeonCrawler.Elements
             SymbolColour = ConsoleColor.Red;
             MapSymbol = 'r';
         }
+
+        public void Movement()
+        {
+            Random rnd = new();
+            int direction = rnd.Next(0, 4);
+
+            if (CollisionHandler.CheckForCollision((Directions)direction, this))
+            {
+                CollisionHandler.Collide();
+            }
+            else
+            {
+                CollisionHandler.ClearOldPosition(this);
+                if (direction == 0)
+                    this.YPosition--;
+                else if (direction == 1)
+                    this.YPosition++;
+                else if (direction == 2)
+                    this.XPosition--;
+                else
+                    this.XPosition++;
+            }
+        }
         public override void Update()
         {
-            throw new NotImplementedException();
         }
     }
 }
