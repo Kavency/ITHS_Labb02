@@ -24,8 +24,16 @@ namespace DungeonCrawler.GameLogic
             {
                 player.PlayerMovement();
                 player.Draw();
-                Thread.Sleep(50);
-                // Game Loop
+                Thread.Sleep(150);
+                foreach (var item in LevelData.MapElements)
+                {
+                    if (item is Rat rat)
+                    {
+                        rat.Movement();
+                        rat.Draw();
+                    }
+                }
+                Thread.Sleep(150);
             }
         }
 
