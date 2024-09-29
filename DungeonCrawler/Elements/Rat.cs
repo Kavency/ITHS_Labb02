@@ -6,8 +6,12 @@ namespace DungeonCrawler.Elements
     {
         public Rat()
         {
+            // Rat: HP = 10, Attack = 1d6+3, Defence = 1d6+1
+            Dice attackDice = new();
+            Dice defenceDice = new();
+
             Name = NameProvider.GetName();
-            Health = 100;
+            Health = 10;
             SymbolColour = ConsoleColor.Red;
             MapSymbol = 'r';
         }
