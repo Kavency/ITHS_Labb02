@@ -12,7 +12,7 @@ namespace DungeonCrawler.GameLogic
             Console.Title = "Dungeon Crawler Deluxe Edition";
             Console.CursorVisible = false;
             
-            string filePath = @"Levels\TestLevel.txt";
+            string filePath = @"Levels\Level1.txt";
             LevelData.Load(filePath);
             player = (Player)LevelData.MapElements.Find(find => find.MapSymbol == '@');
 
