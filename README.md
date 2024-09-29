@@ -5,7 +5,7 @@
 - [x] Appen ska vara kompatibel med, och kunna läsa in filen “Level1.txt”.
   - [x] Korrekt hantera de olika elementen enligt beskrivningen i labben.
 - [x] Fiendetyperna rat och snakes ska finnas.
-  - [ ] Ha unika stats.
+  - [x] Ha unika stats.
   - [ ] Deras beteenden (rörelsemönster) ska fungera enligt beskrivningen i labben.
 - [x] Appen ska ha abstrakta basklasser “LevelElement” och “Enemy”.
   - [x] Klassen “Wall” ärver direkt av “LevelElement”.
