@@ -25,25 +25,25 @@ namespace DungeonCrawler.GameLogic
             switch (characterAsInt)
             {
                 case 35:
-                    Wall wall = new() { MapSymbol = (char)characterAsInt };
+                    Wall wall = new();
                     _elements.Add(wall);
                     SetElementPosition(wall);
                     wall.Draw();
                     break;
                 case 114:
-                    Rat rat = new() { MapSymbol = (char)characterAsInt };
+                    Rat rat = new();
                     _elements.Add(rat);
                     SetElementPosition(rat);
                     rat.Draw();
                     break;
                 case 115:
-                    Snake snake = new() { MapSymbol = (char)characterAsInt };
+                    Snake snake = new();
                     _elements.Add(snake);
                     SetElementPosition(snake);
                     snake.Draw();
                     break;
                 case 64:
-                    Player player = new() { MapSymbol = (char)characterAsInt };
+                    Player player = new();
                     _elements.Add(player);
                     (player.XPosition, player.YPosition) = Console.GetCursorPosition();
                     SetElementPosition(player);
