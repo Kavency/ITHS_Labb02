@@ -4,7 +4,7 @@ namespace DungeonCrawler.GameLogic
 {
     internal static class CollisionHandler
     {
-        static LevelElement collisionObject;
+        public static LevelElement collisionObject;
 
         public static bool CheckForCollision(Enum directionMoved, LevelElement character)
         {
@@ -59,10 +59,27 @@ namespace DungeonCrawler.GameLogic
                     return false;
             }
         }
-        public static void Collide()
+        public static void Collide(LevelElement attacker, LevelElement defender)
         {
-            Console.SetCursorPosition(1, 22);
-            //Console.WriteLine(collisionObject + "             ");
+            if (attacker is Player player && defender is Enemy enemy)
+            {
+                int result = player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie();
+                
+                if (result > 0)
+                {
+                    enemy.Health -= result;
+                    TextHandler.EventText(player, enemy, result);
+                }
+                else if(result < 0)
+                {
+                    player.Health -= result;
+                }
+                else
+                {
+                    // Oavgjort...
+                }
+
+            }
         }
 
         public static void ClearOldPosition(LevelElement element)
