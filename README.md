@@ -12,9 +12,9 @@
   - [x] Klasserna “Rat” och “Snake” ärver direkt av “Enemy” (indirekt av “LevelElement”).
 - [x] Spelaren ska kunna flytta ett steg per omgång (upp/ner/höger/vänster).
   - [x] Inte genom väggar eller fiender.
-- [ ] Spelaren har ett synfält som sträcker sig i en radie 5 steg bort från spelarens position.
-  - [ ] Fiender som är utanför synfältet syns ej (men uppdateras ändå varje omgång).
-  - [ ] Väggarna försvinner inte när man väl upptäckt dem första gången.
+- [x] Spelaren har ett synfält som sträcker sig i en radie 5 steg bort från spelarens position.
+  - [x] Fiender som är utanför synfältet syns ej (men uppdateras ändå varje omgång).
+  - [x] Väggarna försvinner inte när man väl upptäckt dem första gången.
 - [ ] Går spelaren på en fiende ska attack, defence, och skada avgöras med hjälp av tärningsslag.
   - [ ] Fienden gör direkt en motattack (om den överlever).
 - [ ] Går en fiende in i spelaren görs samma sekvens som i föregående punkt, men fienden attackerar först.
