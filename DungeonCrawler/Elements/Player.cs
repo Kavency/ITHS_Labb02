@@ -6,6 +6,8 @@ namespace DungeonCrawler.Elements
     {
         public string Name { get; set; }
         public int Health { get; set; }
+        public int NumberOfStepsTaken { get; set; } = 0;
+        public bool HasCollided { get; set; } = false;
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
@@ -105,6 +107,14 @@ namespace DungeonCrawler.Elements
                             break;
                     }
                 }
+            }
+            NumberOfStepsTaken++;
+
+            if (NumberOfStepsTaken >= 5 && HasCollided)
+            {
+                TextHandler.ClearEventText();
+                NumberOfStepsTaken = 0;
+                HasCollided = false;
             }
         }
     }
