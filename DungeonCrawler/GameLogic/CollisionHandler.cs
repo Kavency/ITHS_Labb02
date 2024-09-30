@@ -8,7 +8,7 @@ namespace DungeonCrawler.GameLogic
 
         public static bool CheckForCollision(Enum directionMoved, LevelElement character)
         {
-            if (Directions.North.Equals(directionMoved))
+            if (directionMoved.Equals(Directions.North))
             {
                 var item = LevelData.MapElements.Find(item => item.XPosition == character.XPosition && item.YPosition == character.YPosition - 1);
 
@@ -20,7 +20,7 @@ namespace DungeonCrawler.GameLogic
                 else
                     return false;
             }
-            else if (Directions.South.Equals(directionMoved))
+            else if (directionMoved.Equals(Directions.South))
             {
                 var item = LevelData.MapElements.Find(item => item.XPosition == character.XPosition && item.YPosition == character.YPosition + 1);
 
@@ -33,7 +33,7 @@ namespace DungeonCrawler.GameLogic
                     return false;
 
             }
-            else if (Directions.West.Equals(directionMoved))
+            else if (directionMoved.Equals(Directions.West))
             {
                 var item = LevelData.MapElements.Find(item => item.YPosition == character.YPosition && item.XPosition == character.XPosition - 1);
 
@@ -63,6 +63,9 @@ namespace DungeonCrawler.GameLogic
         {
             if (attacker is Player player && defender is Enemy enemy)
             {
+                player.HasCollided = true;
+                player.NumberOfStepsTaken = 0;
+                
                 int result = player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie();
                 
                 if (result > 0)

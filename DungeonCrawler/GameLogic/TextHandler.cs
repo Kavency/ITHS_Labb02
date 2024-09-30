@@ -71,7 +71,7 @@ namespace DungeonCrawler.GameLogic
 
         public static void EventText(LevelElement attacker, LevelElement defender, int result)
         {
-            ClearEvent();
+            ClearEventText();
 
             if (attacker is Player player && defender is Enemy enemy)
             {
@@ -84,7 +84,7 @@ namespace DungeonCrawler.GameLogic
             }
         }
 
-        private static void ClearEvent()
+        public static void ClearEventText()
         {
             Console.SetCursorPosition(5, 4);
             Console.Write(ClearRow);
