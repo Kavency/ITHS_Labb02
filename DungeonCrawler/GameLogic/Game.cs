@@ -1,5 +1,4 @@
 ﻿using DungeonCrawler.Elements;
-using System.Threading.Channels;
 
 namespace DungeonCrawler.GameLogic
 {
@@ -9,9 +8,6 @@ namespace DungeonCrawler.GameLogic
 
         public void SetupGame()
         {
-            Console.Title = "Dungeon Crawler Deluxe Edition";
-            Console.CursorVisible = false;
-
             string filePath = @"Levels\Level1.txt";
             LevelData.Load(filePath);
             player = (Player)LevelData.MapElements.Find(findPlayer => findPlayer.MapSymbol == '@');
@@ -22,6 +18,7 @@ namespace DungeonCrawler.GameLogic
         {
             while (true)
             {
+                TextHandler.PlayerStatsText(player);
                 player.PlayerMovement();
                 player.Draw();
                 DrawGame();
@@ -50,7 +47,6 @@ namespace DungeonCrawler.GameLogic
                 {
                     DistanceController.CheckDistance(player, rat);
                     rat.Update();
-                    //rat.Draw();
                 }
                 else if (item is Snake snake)
                 {

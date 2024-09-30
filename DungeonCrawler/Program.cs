@@ -6,17 +6,20 @@ namespace DungeonCrawler
     {
         static void Main(string[] args)
         {
+            Console.Title = "Dungeon Crawler Deluxe Edition";
             Console.CursorVisible = false;
 
             while(true)
             {
-                MainMenu.PrintMainMenuTitle();
+                TextHandler.MainMenuText();
+                
                 ConsoleKeyInfo input = Console.ReadKey(true);
+                
                 if (input.Key == ConsoleKey.Escape)
                     break;
                 
                 Console.Clear();
-
+                TextHandler.HeaderText();
                 Game game = new();
                 game.SetupGame();
                 game.PlayGame();
