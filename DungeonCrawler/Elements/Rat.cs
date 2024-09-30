@@ -8,14 +8,17 @@ namespace DungeonCrawler.Elements
         public Rat()
         {
             // Rat: HP = 10, Attack = 1d6+3, Defence = 1d6+1
-            Dice attackDice = new();
-            Dice defenceDice = new();
+            Dice attackDice = new(1, 6, 3);
+            Dice defenceDice = new(1, 6, 1);
 
             Name = NameProvider.GetName();
             Health = 10;
             VisibleColour = ConsoleColor.Red;
             MapSymbol = 'r';
+            AttackDice = attackDice;
+            DefenceDice = defenceDice;
         }
+
         public override void Update()
         {
             Movement();
@@ -29,7 +32,7 @@ namespace DungeonCrawler.Elements
 
             if (CollisionHandler.CheckForCollision((Directions)direction, this))
             {
-                CollisionHandler.Collide();
+                CollisionHandler.Collide(this, CollisionHandler.collisionObject);
             }
             else
             {
@@ -43,6 +46,11 @@ namespace DungeonCrawler.Elements
                 else
                     this.XPosition++;
             }
+        }
+
+        public override string ToString()
+        {
+            return "Rat";
         }
     }
 }
