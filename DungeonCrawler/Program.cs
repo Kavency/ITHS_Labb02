@@ -6,9 +6,25 @@ namespace DungeonCrawler
     {
         static void Main(string[] args)
         {
-            Game game = new();
-            game.SetupGame();
-            game.PlayGame();
+            Console.CursorVisible = false;
+
+            while(true)
+            {
+                MainMenu.PrintMainMenuTitle();
+                ConsoleKeyInfo input = Console.ReadKey(true);
+                if (input.Key == ConsoleKey.Escape)
+                    break;
+                
+                Console.Clear();
+
+                Game game = new();
+                game.SetupGame();
+                game.PlayGame();
+            
+            
+            
+            }
+
         }
     }
 }
