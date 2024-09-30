@@ -91,6 +91,10 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.Spacebar:
                             isKeyPressed = true;
                             break;
+                        case ConsoleKey.Escape:
+                            isKeyPressed = true;
+                            Environment.Exit(0);
+                            break;
                     }
                 }
             }

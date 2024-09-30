@@ -1,4 +1,5 @@
 ﻿using DungeonCrawler.GameLogic;
+using System.Numerics;
 
 namespace DungeonCrawler.Elements
 {
@@ -18,6 +19,7 @@ namespace DungeonCrawler.Elements
         public override void Update()
         {
             Movement();
+            Draw();
         }
 
         public void Movement()
