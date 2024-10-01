@@ -59,30 +59,29 @@ namespace DungeonCrawler.GameLogic
                     return false;
             }
         }
-        public static void Collide(LevelElement attacker, LevelElement defender)
+        public static void PerformAttack(LevelElement attacker, LevelElement defender)
         {
-            if (attacker is Player player && defender is Enemy enemy)
+            int result = 0;
+
+            Enemy enemy = null;
+            Player player = null;
+
+            if (attacker is Player && defender is Enemy)
             {
-                player.HasCollided = true;
-                player.NumberOfStepsTaken = 0;
-                
-                int result = player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie();
-                
-                if (result > 0)
-                {
-                    enemy.Health -= result;
-                    TextHandler.EventText(player, enemy, result);
-                }
-                else if(result < 0)
-                {
-                    player.Health -= result;
-                }
-                else
-                {
-                    // Oavgjort...
-                }
+                player = attacker as Player;
+                enemy = defender as Enemy;
+                result = player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie();
+                TextHandler.PlayerAttacksText(player, enemy, result);
 
             }
+            else if(attacker is Enemy && defender is Player)
+            {
+                enemy = attacker as Enemy;
+                player = defender as Player;
+                result = enemy.AttackDice.ThrowDie() - player.DefenceDice.ThrowDie();
+                TextHandler.EnemyAttacksText(player, enemy, result);
+            }
+
         }
 
         public static void ClearOldPosition(LevelElement element)
@@ -90,5 +89,6 @@ namespace DungeonCrawler.GameLogic
             Console.SetCursorPosition(element.XPosition, element.YPosition);
             Console.Write(" ");
         }
+        
     }
 }
