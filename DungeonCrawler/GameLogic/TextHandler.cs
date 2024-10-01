@@ -43,21 +43,38 @@ namespace DungeonCrawler.GameLogic
             "▓▓░░                                                                        ░░▓▓\r\n" +
             "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\r\n";
 
+        static private string _nameBox =
+            "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\r\n" +
+            "█                                                █\r\n" +
+            "█ Gallant Knight what be thy name?               █\r\n" +
+            "█ ->                                             █\r\n" +
+            "█                                                █\r\n" +
+            "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
+
+
         static private string _clearRow = "                                                                         ";
 
         public static string Title { get { return _titleScreen; } }
         public static string Header { get { return _header; } }
         public static string ClearRow { get { return _clearRow; } }
+        public static string NameBox { get { return _nameBox; } }
 
         public static void MainMenuText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(TextHandler.Title);
-            Console.ForegroundColor = ConsoleColor.Gray;
         }
         public static void HeaderText()
         {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(Header);
+        }
+
+        public static void NameBoxText()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(NameBox);
+            Console.SetCursorPosition(5, 3);
         }
 
         public static void PlayerStatsText(Player player)
