@@ -1,6 +1,4 @@
-﻿using DungeonCrawler.GameLogic;
-
-namespace DungeonCrawler.Elements;
+﻿namespace DungeonCrawler.Elements;
 abstract internal class LevelElement
 {
     public char MapSymbol { get; set; }
