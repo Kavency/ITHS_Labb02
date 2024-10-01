@@ -20,7 +20,35 @@ namespace DungeonCrawler.Elements
         }
         public override void Update()
         {
-            throw new NotImplementedException();
+            Draw();
+        }
+
+        public void Move()
+        {
+            Random rnd = new();
+            int direction = rnd.Next(0, 4);
+
+            if (CollisionHandler.CheckForCollision((Directions)direction, this))
+            {
+                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
+            }
+            else
+            {
+                CollisionHandler.ClearOldPosition(this);
+                if (direction == 0)
+                    this.YPosition--;
+                else if (direction == 1)
+                    this.YPosition++;
+                else if (direction == 2)
+                    this.XPosition--;
+                else
+                    this.XPosition++;
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Snake";
         }
     }
 }
