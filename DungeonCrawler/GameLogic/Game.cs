@@ -21,8 +21,8 @@ namespace DungeonCrawler.GameLogic
                 TextHandler.PlayerStatsText(player);
                 player.PlayerMovement();
                 player.Draw();
-                DrawGame();
                 Thread.Sleep(150);
+                DrawGame();
             }
         }
 
@@ -39,20 +39,20 @@ namespace DungeonCrawler.GameLogic
                     else
                         Console.ForegroundColor = wall.InVisibleColour;
 
-                    DistanceController.CheckDistance(player, wall);
+                    DistanceController.ViewRange(player, wall);
                     Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                     wall.Draw();
                 }
                 else if (item is Rat rat)
                 {
-                    DistanceController.CheckDistance(player, rat);
+                    DistanceController.ViewRange(player, rat);
                     rat.Update();
                 }
                 else if (item is Snake snake)
                 {
-                    DistanceController.CheckDistance(player, snake);
-                    //snake.Movement();
-                    snake.Draw();
+                    DistanceController.ViewRange(player, snake);
+                    DistanceController.DistanceToPlayer(player, snake);
+                    snake.Update();
                 }
             }
         }
