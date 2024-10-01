@@ -69,19 +69,28 @@ namespace DungeonCrawler.GameLogic
             Console.Write($"Name: {player.Name} Health: {player.Health}");
         }
 
-        public static void EventText(LevelElement attacker, LevelElement defender, int result)
+        public static void PlayerAttacksText(Player player, Enemy enemy, int result)
         {
             ClearEventText();
 
-            if (attacker is Player player && defender is Enemy enemy)
-            {
-                Console.SetCursorPosition(5, 4);
-                Console.Write($"You attack ({player.AttackDice.ToString()}).");
-                Console.SetCursorPosition(5, 5);
-                Console.Write($"{enemy.Name} 'the {enemy}' defends ({enemy.DefenceDice.ToString()}).");
-                Console.SetCursorPosition(5, 6);
-                Console.Write($"You make {result} damage.");
-            }
+            Console.SetCursorPosition(5, 4);
+            Console.Write($"{player.Name} rolls {player.AttackDice}");
+            Console.SetCursorPosition(5, 5);
+            Console.Write($"{enemy.Name} 'the {enemy}' rolls {enemy.DefenceDice}.");
+            Console.SetCursorPosition(5, 6);
+            Console.Write($"{player.Name} made {result} damage.");
+        }
+
+        public static void EnemyAttacksText(Player player, Enemy enemy, int result)
+        {
+            ClearEventText();
+
+            Console.SetCursorPosition(5, 4);
+            Console.Write($"{enemy.Name} 'the {enemy}' rolls {enemy.AttackDice}");
+            Console.SetCursorPosition(5, 5);
+            Console.Write($"{player.Name} rolls {player.DefenceDice}.");
+            Console.SetCursorPosition(5, 6);
+            Console.Write($"{enemy.Name} made {result} damage.");
         }
 
         public static void ClearEventText()
