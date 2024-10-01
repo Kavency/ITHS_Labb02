@@ -45,7 +45,7 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.W:
                             if (CollisionHandler.CheckForCollision(Directions.North, this))
                             {
-                                CollisionHandler.Collide(this, CollisionHandler.collisionObject);
+                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }
@@ -59,7 +59,7 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.S:
                             if (CollisionHandler.CheckForCollision(Directions.South, this))
                             {
-                                CollisionHandler.Collide(this, CollisionHandler.collisionObject);
+                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }
@@ -73,7 +73,7 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.A:
                             if (CollisionHandler.CheckForCollision(Directions.West, this))
                             {
-                                CollisionHandler.Collide(this, CollisionHandler.collisionObject);
+                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }
@@ -87,7 +87,7 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.D:
                             if (CollisionHandler.CheckForCollision(Directions.East, this))
                             {
-                                CollisionHandler.Collide(this, CollisionHandler.collisionObject);
+                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }

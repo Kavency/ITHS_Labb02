@@ -1,5 +1,4 @@
 ﻿using DungeonCrawler.GameLogic;
-using System.Numerics;
 
 namespace DungeonCrawler.Elements
 {
@@ -21,18 +20,18 @@ namespace DungeonCrawler.Elements
 
         public override void Update()
         {
-            Movement();
+            Move();
             Draw();
         }
 
-        public void Movement()
+        public void Move()
         {
             Random rnd = new();
             int direction = rnd.Next(0, 4);
 
             if (CollisionHandler.CheckForCollision((Directions)direction, this))
             {
-                CollisionHandler.Collide(this, CollisionHandler.collisionObject);
+                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
             }
             else
             {
