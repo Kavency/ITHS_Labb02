@@ -18,14 +18,14 @@ namespace DungeonCrawler
                 if (input.Key == ConsoleKey.Escape)
                     break;
                 
-                Console.Clear();
-                TextHandler.HeaderText();
-                Game game = new();
-                game.SetupGame();
-                game.PlayGame();
-            
-            
-            
+                else if(input.Key == ConsoleKey.Enter)
+                {
+                    Game game = new();
+                    game.SetupGame();
+                    game.PlayGame();
+                }
+
+                
             }
 
         }
