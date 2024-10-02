@@ -71,6 +71,11 @@ namespace DungeonCrawler.GameLogic
                 player = attacker as Player;
                 enemy = defender as Enemy;
                 result = player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie();
+                if (result < 0)
+                    result = 0;
+
+                enemy.Health -= result;
+                
                 TextHandler.PlayerAttacksText(player, enemy, result);
 
             }
@@ -79,9 +84,14 @@ namespace DungeonCrawler.GameLogic
                 enemy = attacker as Enemy;
                 player = defender as Player;
                 result = enemy.AttackDice.ThrowDie() - player.DefenceDice.ThrowDie();
+                if (result < 0)
+                    result = 0;
+
+                player.Health -= result;
                 TextHandler.EnemyAttacksText(player, enemy, result);
             }
 
+            
         }
 
         public static void ClearOldPosition(LevelElement element)

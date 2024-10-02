@@ -17,6 +17,11 @@ namespace DungeonCrawler.GameLogic
             TextHandler.NameBoxText();
             Console.CursorVisible = true;
             string playerName = Console.ReadLine().Trim();
+            if (playerName == "")
+            {
+                playerName = NameProvider.GetName();
+            }
+            
             Console.CursorVisible = false;
 
             Console.Clear();
