@@ -1,4 +1,10 @@
 ﻿
+using Microsoft.VisualBasic;
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata;
+using System.Text.RegularExpressions;
+
 namespace DungeonCrawler.GameLogic
 {
     static internal class NameProvider
@@ -13,7 +19,24 @@ namespace DungeonCrawler.GameLogic
                 "Thalia", "Nymeria", "Elysia", "Calista", "Freya",
                 "Gwendolyn", "Aeliana", "Brienne", "Cerys", "Daenerys",
                 "Elowen", "Fionna", "Gwyneth", "Hespera", "Ilyana",
-                "Jessamine", "Kaida", "Liora", "Morgana", "Nerys" };
+                "Jessamine", "Kaida", "Liora", "Morgana", "Nerys",
+                "Aaron", "Aiden", "Alan", "Alaric", "Alastair", "Alex",
+                "Ammon", "Anderson", "Ansel", "Arlo", "Armon", "Arran", 
+                "Arthur", "Atticus", "Barrett", "Bartholomew", "Bennett", 
+                "Bryce", "Calvin", "Callum", "Caspar", "Conrad", "Eamon",
+                "Edward", "Elias", "Everett", "Gabriel", "Gideon", "Griffin",
+                "Henry", "Hugh", "Jack", "Jacob", "Julian", "Leo", "Maxwell",
+                "Nathan", "Noah", "Sawyer", "Everest", "Hunter", "Marco",
+                "Atlas", "Orion", "Zephyr", "Silas", "Owen", "Filippo",
+                "Enzo", "Dante","Abenthe", "Aeryn", "Afra", "Alina", 
+                "Amaris", "Aria", "Aventine", "Aviv", "Aziza", "Blythe", 
+                "Bonita", "Calliope", "Cara", "Chara", "Cora", "Farah",
+                "Hadley", "Iggy", "Lyra", "Aurora", "Seraphina", "Rosalie",
+                "Isadora", "Isabella", "Lyra", "Violet", "Zara", "Emberwing",
+                "Stormwisp", "Sunstrike", "Wildheart", "Skyspear", "Nightshade", 
+                "Aziza", "Blythe", "Bonita", "Calliope", "Cara", "Chara", "Cora", 
+                "Farah", "Hadley", "Iggy", "Lyra", "Aurora", "Seraphina", 
+                "Rosalie", "Isadora", "Isabella", "Lyra" };
 
         static public string GetRandomName()
         {
