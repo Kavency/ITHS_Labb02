@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Windows.Extensions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Levels\Level1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
