@@ -15,7 +15,7 @@ namespace DungeonCrawler.GameLogic
                 "Elowen", "Fionna", "Gwyneth", "Hespera", "Ilyana",
                 "Jessamine", "Kaida", "Liora", "Morgana", "Nerys" };
 
-        static public string GetName()
+        static public string GetRandomName()
         {
             Random rnd = new();
             return names[rnd.Next(1, names.Length)];

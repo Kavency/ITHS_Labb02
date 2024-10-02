@@ -10,7 +10,7 @@ namespace DungeonCrawler.Elements
             Dice attackDice = new(1, 6, 3);
             Dice defenceDice = new(1, 6, 1);
 
-            Name = NameProvider.GetName();
+            Name = NameProvider.GetRandomName();
             Health = 10;
             VisibleColour = ConsoleColor.Red;
             MapSymbol = 'r';

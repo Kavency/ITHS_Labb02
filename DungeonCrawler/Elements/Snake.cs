@@ -11,7 +11,7 @@ namespace DungeonCrawler.Elements
             Dice attackDice = new(3, 4, 2);
             Dice defenceDice = new(1, 8, 5);
 
-            Name = NameProvider.GetName();
+            Name = NameProvider.GetRandomName();
             Health = 25;
             VisibleColour = ConsoleColor.Red;
             MapSymbol = 's';

@@ -19,7 +19,7 @@ namespace DungeonCrawler.GameLogic
             string playerName = Console.ReadLine().Trim();
             if (playerName == "")
             {
-                playerName = NameProvider.GetName();
+                playerName = NameProvider.GetRandomName();
             }
             
             Console.CursorVisible = false;
