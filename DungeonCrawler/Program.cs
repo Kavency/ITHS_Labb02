@@ -11,6 +11,7 @@ namespace DungeonCrawler
 
             while(true)
             {
+                Console.Clear();
                 TextHandler.MainMenuText();
                 
                 ConsoleKeyInfo input = Console.ReadKey(true);
