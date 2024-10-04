@@ -5,6 +5,7 @@ namespace DungeonCrawler.GameLogic
     internal class Game
     {
         Player player;
+        GameState gameState = GameState.PlayerTurn;
 
         public void SetupGame()
         {
@@ -37,15 +38,48 @@ namespace DungeonCrawler.GameLogic
 
         public void PlayGame()
         {
-            while (true)
+            while (gameState != GameState.GameOver)
             {
-                TextHandler.PlayerStatsText(player);
-                player.PlayerMovement();
-                player.Draw();
-                Thread.Sleep(150);
+                if (gameState == GameState.PlayerTurn)
+                {
+                    PlayerTurn();
+                }
+                else if (gameState == GameState.EnemyTurn)
+                {
+                    EnemyTurn();
+                }
+
                 DrawGame();
             }
         }
+
+        public void PlayerTurn()
+        {
+            TextHandler.PlayerStatsText(player);
+            player.PlayerMovement();
+            player.Draw();
+            gameState = GameState.EnemyTurn;
+        }
+
+        public void EnemyTurn()
+        {
+            foreach (var item in LevelData.MapElements)
+            {
+                if (item is Rat rat)
+                {
+                    DistanceController.ViewRange(player, rat);
+                    rat.Update();
+                }
+                else if (item is Snake snake)
+                {
+                    DistanceController.ViewRange(player, snake);
+                    DistanceController.DistanceToPlayer(player, snake);
+                    snake.Update();
+                }
+            }
+            gameState = GameState.PlayerTurn;
+        }
+
 
         public void DrawGame()
         {
@@ -63,17 +97,6 @@ namespace DungeonCrawler.GameLogic
                     DistanceController.ViewRange(player, wall);
                     Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                     wall.Draw();
-                }
-                else if (item is Rat rat)
-                {
-                    DistanceController.ViewRange(player, rat);
-                    rat.Update();
-                }
-                else if (item is Snake snake)
-                {
-                    DistanceController.ViewRange(player, snake);
-                    DistanceController.DistanceToPlayer(player, snake);
-                    snake.Update();
                 }
             }
         }
