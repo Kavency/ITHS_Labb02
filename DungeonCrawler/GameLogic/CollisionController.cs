@@ -52,10 +52,11 @@ namespace DungeonCrawler.GameLogic
                 if (item != null)
                 {
                     collisionObject = item;
-                    if (elementThatMoved is Player)
-                        OnAttacking(elementThatMoved as Player);
-                    else if (elementThatMoved is Enemy)
-                        OnAttacking(elementThatMoved as Enemy);
+                    Combat fight = new();
+                    if(elementThatMoved is Player && item is Enemy)
+                        fight.Attack(elementThatMoved as Player, item as Enemy, true);
+                    else if(elementThatMoved is Enemy && item is Player)
+                        fight.Attack(item as Player, elementThatMoved as Enemy, false);
 
                     return true;
                 }
@@ -74,21 +75,5 @@ namespace DungeonCrawler.GameLogic
             Console.SetCursorPosition(element.XPosition, element.YPosition);
             Console.Write(" ");
         }
-
-
-        /// <summary>
-        /// Check the type of the attacker and invokes the Attacking event accordingly.
-        /// </summary>
-        /// <param name="characterThatAttacked">The element that performes the attack.</param>
-        public static void OnAttacking(LevelElement characterThatAttacked)
-        {
-            if (characterThatAttacked is Player)
-                Attacking?.Invoke(characterThatAttacked as Player, collisionObject as Enemy);
-            else if (characterThatAttacked is Enemy)
-                Attacking?.Invoke(characterThatAttacked as Enemy, collisionObject as Player);
-            else
-                return;
-        }
-        
     }
 }
