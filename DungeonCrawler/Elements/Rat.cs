@@ -6,8 +6,6 @@ namespace DungeonCrawler.Elements
     {
         public Rat()
         {
-            //CollisionHandler.Attacking += this.OnAttacking;
-
             // Rat: HP = 10, Attack = 1d6+3, Defence = 1d6+1
             Dice attackDice = new(1, 6, 3);
             Dice defenceDice = new(1, 6, 1);

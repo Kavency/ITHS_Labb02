@@ -16,8 +16,6 @@ namespace DungeonCrawler.Elements
         
         public Player()
         {
-            CollisionController.Attacking += this.OnAttacking;
-
             // PLayer: HP = 100, Attack = , Defence =
             Dice attackDice = new(1, 6, 3);
             Dice defenceDice = new(1, 6, 1);

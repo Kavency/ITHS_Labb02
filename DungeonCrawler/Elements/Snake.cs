@@ -7,8 +7,6 @@ namespace DungeonCrawler.Elements
         // Giftormar?
         public Snake()
         {
-            CollisionController.Attacking += this.OnAttacking;
-
             // Snake: HP = 25, Attack = 3d4+2, Defence = 1d8+5 
             Dice attackDice = new(3, 4, 2);
             Dice defenceDice = new(1, 8, 5);

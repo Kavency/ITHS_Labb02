@@ -6,10 +6,7 @@ namespace DungeonCrawler.GameLogic
     {
         public static LevelElement collisionObject;
         
-        public delegate void AttackEventHandler(LevelElement source, LevelElement receiver);
-        public static AttackEventHandler Attacking;
-
-
+        
         /// <summary>
         /// Compares the next position of the moving element for a possible collision.
         /// </summary>
