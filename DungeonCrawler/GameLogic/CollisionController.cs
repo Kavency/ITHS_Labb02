@@ -2,12 +2,12 @@
 
 namespace DungeonCrawler.GameLogic
 {
-    internal static class CollisionHandler
+    internal static class CollisionController
     {
         public static LevelElement collisionObject;
         
         public delegate void AttackEventHandler(LevelElement source, LevelElement receiver);
-        public static event AttackEventHandler Attacking;
+        public static AttackEventHandler Attacking;
 
 
         /// <summary>

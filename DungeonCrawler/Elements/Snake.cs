@@ -7,7 +7,7 @@ namespace DungeonCrawler.Elements
         // Giftormar?
         public Snake()
         {
-            CollisionHandler.Attacking += this.OnAttacking;
+            CollisionController.Attacking += this.OnAttacking;
 
             // Snake: HP = 25, Attack = 3d4+2, Defence = 1d8+5 
             Dice attackDice = new(3, 4, 2);
@@ -30,13 +30,13 @@ namespace DungeonCrawler.Elements
             Random rnd = new();
             int direction = rnd.Next(0, 4);
 
-            if (CollisionHandler.CheckForCollision((Directions)direction, this))
+            if (CollisionController.CheckForCollision((Directions)direction, this))
             {
                // CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
             }
             else
             {
-                CollisionHandler.ClearOldPosition(this);
+                CollisionController.ClearOldPosition(this);
                 if (direction == 0)
                     this.YPosition--;
                 else if (direction == 1)

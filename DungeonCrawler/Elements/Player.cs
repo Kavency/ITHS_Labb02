@@ -16,7 +16,7 @@ namespace DungeonCrawler.Elements
         
         public Player()
         {
-            CollisionHandler.Attacking += this.OnAttacking;
+            CollisionController.Attacking += this.OnAttacking;
 
             // PLayer: HP = 100, Attack = , Defence =
             Dice attackDice = new(1, 6, 3);
@@ -45,53 +45,53 @@ namespace DungeonCrawler.Elements
                     switch (keyPressed)
                     {
                         case ConsoleKey.W:
-                            if (CollisionHandler.CheckForCollision(Directions.North, this))
+                            if (CollisionController.CheckForCollision(Directions.North, this))
                             {
                                 isKeyPressed = true;
                                 break;
                             }
                             else
                             {
-                                CollisionHandler.ClearOldPosition(this);
+                                CollisionController.ClearOldPosition(this);
                                 this.YPosition--;
                                 isKeyPressed = true;
                                 break;
                             }
                         case ConsoleKey.S:
-                            if (CollisionHandler.CheckForCollision(Directions.South, this))
+                            if (CollisionController.CheckForCollision(Directions.South, this))
                             {
                                 isKeyPressed = true;
                                 break;
                             }
                             else
                             {
-                                CollisionHandler.ClearOldPosition(this);
+                                CollisionController.ClearOldPosition(this);
                                 this.YPosition++;
                                 isKeyPressed = true;
                                 break;
                             }
                         case ConsoleKey.A:
-                            if (CollisionHandler.CheckForCollision(Directions.West, this))
+                            if (CollisionController.CheckForCollision(Directions.West, this))
                             {
                                 isKeyPressed = true;
                                 break;
                             }
                             else
                             {
-                                CollisionHandler.ClearOldPosition(this);
+                                CollisionController.ClearOldPosition(this);
                                 this.XPosition--;
                                 isKeyPressed = true;
                                 break;
                             }
                         case ConsoleKey.D:
-                            if (CollisionHandler.CheckForCollision(Directions.East, this))
+                            if (CollisionController.CheckForCollision(Directions.East, this))
                             {
                                 isKeyPressed = true;
                                 break;
                             }
                             else
                             {
-                                CollisionHandler.ClearOldPosition(this);
+                                CollisionController.ClearOldPosition(this);
                                 this.XPosition++;
                                 isKeyPressed = true;
                                 break;
