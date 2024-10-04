@@ -16,6 +16,8 @@ namespace DungeonCrawler.Elements
         
         public Player()
         {
+            CollisionHandler.Attacking += this.OnAttacking;
+
             // PLayer: HP = 100, Attack = , Defence =
             Dice attackDice = new(1, 6, 3);
             Dice defenceDice = new(1, 6, 1);
@@ -45,7 +47,6 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.W:
                             if (CollisionHandler.CheckForCollision(Directions.North, this))
                             {
-                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }
@@ -59,7 +60,6 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.S:
                             if (CollisionHandler.CheckForCollision(Directions.South, this))
                             {
-                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }
@@ -73,7 +73,6 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.A:
                             if (CollisionHandler.CheckForCollision(Directions.West, this))
                             {
-                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }
@@ -87,7 +86,6 @@ namespace DungeonCrawler.Elements
                         case ConsoleKey.D:
                             if (CollisionHandler.CheckForCollision(Directions.East, this))
                             {
-                                CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
                                 isKeyPressed = true;
                                 break;
                             }
@@ -110,12 +108,24 @@ namespace DungeonCrawler.Elements
             }
             NumberOfStepsTaken++;
 
-            if (NumberOfStepsTaken >= 5 && HasCollided)
+            if (NumberOfStepsTaken > 5 && HasCollided)
             {
                 TextHandler.ClearEventText();
                 NumberOfStepsTaken = 0;
                 HasCollided = false;
             }
         }
+
+        public void OnAttacking(LevelElement source, LevelElement receiver)
+        {
+            Player attacker = source as Player;
+            Enemy defender = receiver as Enemy;
+
+            if (attacker is Player && defender is Enemy)
+                TextHandler.PlayerAttacksText(attacker, defender, 0);
+            else
+                return;
+        }
+
     }
 }
