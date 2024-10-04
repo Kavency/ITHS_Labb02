@@ -62,7 +62,7 @@ namespace DungeonCrawler.GameLogic
         public static void MainMenuText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(TextHandler.Title);
+            Console.WriteLine(Title);
         }
         public static void HeaderText()
         {

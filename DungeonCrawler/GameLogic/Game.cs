@@ -9,13 +9,12 @@ namespace DungeonCrawler.GameLogic
         public void SetupGame()
         {
             
-            Console.Clear();
             string filePath = @"Levels\Level1.txt";
             
             Console.Clear();
-
             TextHandler.NameBoxText();
             Console.CursorVisible = true;
+            
             string playerName = Console.ReadLine().Trim();
             if (playerName == "")
             {
@@ -30,6 +29,9 @@ namespace DungeonCrawler.GameLogic
             LevelData.Load(filePath);
             player = (Player)LevelData.MapElements.Find(findPlayer => findPlayer.MapSymbol == '@');
             player.Name = playerName;
+
+            
+
             DrawGame();
         }
 
