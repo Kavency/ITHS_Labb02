@@ -5,12 +5,11 @@ namespace DungeonCrawler.GameLogic
     internal class Game
     {
         Player player;
-        GameState gameState = GameState.PlayerTurn;
+        public static GameState gameState = GameState.PlayerTurn;
 
         public void SetupGame()
         {
-            
-            string filePath = @"Levels\Level1.txt";
+            string filePath = @"Levels\TestLevel.txt";
             
             Console.Clear();
             TextHandler.NameBoxText();
@@ -30,9 +29,8 @@ namespace DungeonCrawler.GameLogic
             LevelData.Load(filePath);
             player = (Player)LevelData.MapElements.Find(findPlayer => findPlayer.MapSymbol == '@');
             player.Name = playerName;
-
             
-
+            player.Update();
             DrawGame();
         }
 
@@ -41,24 +39,23 @@ namespace DungeonCrawler.GameLogic
             while (gameState != GameState.GameOver)
             {
                 if (gameState == GameState.PlayerTurn)
-                {
                     PlayerTurn();
-                }
                 else if (gameState == GameState.EnemyTurn)
-                {
                     EnemyTurn();
-                }
 
                 DrawGame();
+                Thread.Sleep(150);
             }
         }
 
         public void PlayerTurn()
         {
-            TextHandler.PlayerStatsText(player);
             player.PlayerMovement();
-            player.Draw();
-            gameState = GameState.EnemyTurn;
+            if(gameState != GameState.GameOver)
+            {
+                player.Update();
+                gameState = GameState.EnemyTurn;
+            }
         }
 
         public void EnemyTurn()
