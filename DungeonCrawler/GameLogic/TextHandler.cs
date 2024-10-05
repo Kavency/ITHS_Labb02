@@ -90,6 +90,7 @@ namespace DungeonCrawler.GameLogic
         {
             ClearEventText();
 
+            Console.ForegroundColor = player.VisibleColour;
             Console.SetCursorPosition(5, 4);
             Console.Write($"{player.Name} rolls {player.AttackDice}");
             Console.SetCursorPosition(5, 5);
@@ -102,6 +103,7 @@ namespace DungeonCrawler.GameLogic
         {
             ClearEventText();
 
+            Console.ForegroundColor = enemy.VisibleColour;
             Console.SetCursorPosition(5, 4);
             Console.Write($"{enemy.Name} 'the {enemy}' rolls {enemy.AttackDice}");
             Console.SetCursorPosition(5, 5);
