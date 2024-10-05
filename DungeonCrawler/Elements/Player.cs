@@ -30,77 +30,72 @@ namespace DungeonCrawler.Elements
 
         public void PlayerMovement()
         {
-            bool isKeyPressed = false;
+            keyInfo = Console.ReadKey(true);
+            keyPressed = keyInfo.Key;
 
-            while (!isKeyPressed)
+            switch (keyPressed)
             {
-
-                keyInfo = Console.ReadKey(true);
-                keyPressed = keyInfo.Key;
-
-                switch (keyPressed)
-                {
-                    case ConsoleKey.W:
-                        if (CollisionController.CheckForCollision(Directions.North, this))
-                        {
-                            isKeyPressed = true;
-                            break;
-                        }
-                        else
-                        {
-                            CollisionController.ClearOldPosition(this);
-                            this.YPosition--;
-                            isKeyPressed = true;
-                            break;
-                        }
-                    case ConsoleKey.S:
-                        if (CollisionController.CheckForCollision(Directions.South, this))
-                        {
-                            isKeyPressed = true;
-                            break;
-                        }
-                        else
-                        {
-                            CollisionController.ClearOldPosition(this);
-                            this.YPosition++;
-                            isKeyPressed = true;
-                            break;
-                        }
-                    case ConsoleKey.A:
-                        if (CollisionController.CheckForCollision(Directions.West, this))
-                        {
-                            isKeyPressed = true;
-                            break;
-                        }
-                        else
-                        {
-                            CollisionController.ClearOldPosition(this);
-                            this.XPosition--;
-                            isKeyPressed = true;
-                            break;
-                        }
-                    case ConsoleKey.D:
-                        if (CollisionController.CheckForCollision(Directions.East, this))
-                        {
-                            isKeyPressed = true;
-                            break;
-                        }
-                        else
-                        {
-                            CollisionController.ClearOldPosition(this);
-                            this.XPosition++;
-                            isKeyPressed = true;
-                            break;
-                        }
-                    case ConsoleKey.Spacebar:
-                        isKeyPressed = true;
+                case ConsoleKey.W:
+                    if (CollisionController.CheckForCollision(Directions.North, this))
+                    {
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
                         break;
-                    case ConsoleKey.Escape:
-                        isKeyPressed = true;
-                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        CollisionController.ClearOldPosition(this);
+                        this.YPosition--;
                         break;
-                }
+                    }
+                case ConsoleKey.S:
+                    if (CollisionController.CheckForCollision(Directions.South, this))
+                    {
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        break;
+                    }
+                    else
+                    {
+                        CollisionController.ClearOldPosition(this);
+                        this.YPosition++;
+                        break;
+                    }
+                case ConsoleKey.A:
+                    if (CollisionController.CheckForCollision(Directions.West, this))
+                    {
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        break;
+                    }
+                    else
+                    {
+                        CollisionController.ClearOldPosition(this);
+                        this.XPosition--;
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        break;
+                    }
+                case ConsoleKey.D:
+                    if (CollisionController.CheckForCollision(Directions.East, this))
+                    {
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        break;
+                    }
+                    else
+                    {
+                        CollisionController.ClearOldPosition(this);
+                        this.XPosition++;
+                        break;
+                    }
+                case ConsoleKey.Spacebar:
+                    break;
+                case ConsoleKey.Escape:
+                    Game.gameState = GameState.GameOver;
+                    break;
             }
+        }
+
+        public void Update()
+        {
+            TextHandler.PlayerStatsText(this);
+            Draw();
         }
     }
 }
