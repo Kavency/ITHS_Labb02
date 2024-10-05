@@ -52,12 +52,6 @@ namespace DungeonCrawler.GameLogic
                 if (item != null)
                 {
                     collisionObject = item;
-                    Combat fight = new();
-                    if(elementThatMoved is Player && item is Enemy)
-                        fight.Attack(elementThatMoved as Player, item as Enemy, true);
-                    else if(elementThatMoved is Enemy && item is Player)
-                        fight.Attack(item as Player, elementThatMoved as Enemy, false);
-
                     return true;
                 }
                 else

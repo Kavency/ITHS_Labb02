@@ -2,20 +2,29 @@
 
 namespace DungeonCrawler.GameLogic
 {
-    internal class Combat
+    internal static class Combat
     {
-        int result = 0;
-        public void Attack(Player player, Enemy? enemy, bool isPlayerTheAttacker)
+        static int result = 0;
+        public static void Attack(Player player, Enemy? enemy, bool isPlayerTheAttacker)
         {
+            if (player is null || enemy is null)
+                return;
+
             if (isPlayerTheAttacker)
             {
                 PlayerAttacks();
-                EnemyAttacks();
+                if(enemy.Health <= 0)
+                    LevelData.MapElements.Remove(enemy);
+                else
+                    EnemyAttacks();
             }
             else if (!isPlayerTheAttacker)
             {
                 EnemyAttacks();
-                PlayerAttacks();
+                if (player.Health <= 0) { }
+                // Player death
+                else
+                    PlayerAttacks();
             }
 
             else
@@ -31,7 +40,6 @@ namespace DungeonCrawler.GameLogic
                 enemy.Health -= result;
 
                 TextHandler.PlayerAttacksText(player, enemy, result);
-                Thread.Sleep(1500);
             }
 
             void EnemyAttacks()
@@ -44,7 +52,6 @@ namespace DungeonCrawler.GameLogic
                 player.Health -= result;
 
                 TextHandler.EnemyAttacksText(player, enemy, result);
-                Thread.Sleep(1500);
             }
         }
     }

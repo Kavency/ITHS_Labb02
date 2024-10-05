@@ -30,7 +30,7 @@ namespace DungeonCrawler.Elements
 
             if (CollisionController.CheckForCollision((Directions)direction, this))
             {
-               // CollisionHandler.PerformAttack(this, CollisionHandler.collisionObject);
+                Combat.Attack(CollisionController.collisionObject as Player, this, false);
             }
             else
             {
