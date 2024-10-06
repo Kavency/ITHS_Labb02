@@ -4,54 +4,71 @@ namespace DungeonCrawler.GameLogic
 {
     internal static class Combat
     {
-        static int result = 0;
+        private static int _result = 0;
+        public static int Result { get { return _result; } }
         public static void Attack(Player player, Enemy? enemy, bool isPlayerTheAttacker)
         {
             if (player is null || enemy is null)
                 return;
 
+            _result = CalculateResult(player, enemy, isPlayerTheAttacker);
+
+            if (_result < 0)
+                _result = 0;
+
             if (isPlayerTheAttacker)
             {
-                PlayerAttacks();
-                if(enemy.Health <= 0)
+                enemy.Health -= _result;
+                TextHandler.AttackText(player, enemy, isPlayerTheAttacker: true, isCounterAttacking: false);
+                Thread.Sleep(1000);
+
+                if (enemy.Health <= 0)
+                {
                     LevelData.MapElements.Remove(enemy);
+                    // Killed enemy text...
+                }
                 else
-                    EnemyAttacks();
+                {
+                    // Counter attack...
+                    _result = enemy.AttackDice.ThrowDie() - player.DefenceDice.ThrowDie();
+                    if (_result < 0)
+                        _result = 0;
+                    player.Health -= _result;
+                    TextHandler.AttackText(player, enemy, isPlayerTheAttacker: true, isCounterAttacking: true);
+                    Thread.Sleep(500);
+
+                }
             }
+
             else if (!isPlayerTheAttacker)
             {
-                EnemyAttacks();
-                if (player.Health <= 0) { }
-                // Player death
+                player.Health -= _result;
+                TextHandler.AttackText(player, enemy, isPlayerTheAttacker: false, isCounterAttacking: false);
+                Thread.Sleep(1000);
+
+                if (player.Health <= 0)
+                {
+                    // Player death
+                }
                 else
-                    PlayerAttacks();
+                {
+                    // Counter attack...
+                    _result = player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie();
+                    if (_result < 0)
+                        _result = 0;
+                    enemy.Health -= _result;
+                    TextHandler.AttackText(player, enemy, isPlayerTheAttacker: false, isCounterAttacking: true);
+                    Thread.Sleep(500);
+
+                }
             }
 
-            else
-                return;
 
-            void PlayerAttacks()
+            static int CalculateResult(Player player, Enemy? enemy, bool isPlayerTheAttacker)
             {
-                result = player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie();
-                
-                if (result < 0)
-                    result = 0;
-
-                enemy.Health -= result;
-
-                TextHandler.PlayerAttacksText(player, enemy, result);
-            }
-
-            void EnemyAttacks()
-            {
-                result = enemy.AttackDice.ThrowDie() - player.DefenceDice.ThrowDie();
-
-                if (result < 0)
-                    result = 0;
-
-                player.Health -= result;
-
-                TextHandler.EnemyAttacksText(player, enemy, result);
+                return isPlayerTheAttacker
+                                ? player.AttackDice.ThrowDie() - enemy.DefenceDice.ThrowDie()
+                                : enemy.AttackDice.ThrowDie() - player.DefenceDice.ThrowDie();
             }
         }
     }

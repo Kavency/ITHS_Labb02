@@ -1,4 +1,5 @@
 ﻿using DungeonCrawler.Elements;
+using System.Xml.Linq;
 
 namespace DungeonCrawler.GameLogic
 {
@@ -44,7 +45,7 @@ namespace DungeonCrawler.GameLogic
                     EnemyTurn();
 
                 DrawGame();
-                Thread.Sleep(150);
+                Thread.Sleep(250);
             }
         }
 
@@ -80,6 +81,8 @@ namespace DungeonCrawler.GameLogic
 
         public void DrawGame()
         {
+            TextHandler.PlayerStatsText(player);
+
             foreach (var item in LevelData.MapElements)
             {
                 if (item is Wall wall)
@@ -94,6 +97,11 @@ namespace DungeonCrawler.GameLogic
                     DistanceController.ViewRange(player, wall);
                     Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                     wall.Draw();
+                }
+                if(item is Enemy enemy)
+                {
+                    DistanceController.ViewRange(player, enemy);
+                    enemy.Draw();
                 }
             }
         }
