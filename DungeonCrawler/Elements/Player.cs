@@ -97,5 +97,10 @@ namespace DungeonCrawler.Elements
             TextHandler.PlayerStatsText(this);
             Draw();
         }
+
+        public override string ToString()
+        {
+            return $"{this.Name}";
+        }
     }
 }

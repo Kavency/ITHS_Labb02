@@ -49,7 +49,7 @@ namespace DungeonCrawler.Elements
 
         public override string ToString()
         {
-            return "Rat";
+            return $"{this.Name} 'the Rat'";
         }
     }
 }

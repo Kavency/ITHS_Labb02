@@ -48,7 +48,7 @@ namespace DungeonCrawler.Elements
 
         public override string ToString()
         {
-            return "Snake";
+            return $"{this.Name} 'The Snake'";
         }
     }
 }
