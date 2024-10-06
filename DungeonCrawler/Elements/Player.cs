@@ -6,7 +6,7 @@ namespace DungeonCrawler.Elements
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        public bool HasCollided { get; set; } = false;
+        public bool CanMove { get; set; } = true;
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
@@ -45,6 +45,7 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.YPosition--;
+                        Draw();
                         break;
                     }
                 case ConsoleKey.S:
@@ -57,6 +58,7 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.YPosition++;
+                        Draw();
                         break;
                     }
                 case ConsoleKey.A:
@@ -69,6 +71,7 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.XPosition--;
+                        Draw();
                         Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
                         break;
                     }
@@ -82,6 +85,7 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.XPosition++;
+                        Draw();
                         break;
                     }
                 case ConsoleKey.Spacebar:
