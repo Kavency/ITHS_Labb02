@@ -52,7 +52,7 @@ namespace DungeonCrawler.GameLogic
             "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
 
 
-        static private string _clearRow = "                                                                         ";
+        static private string _clearRow = "                                                                          \r";
 
         public static string Title { get { return _titleScreen; } }
         public static string Header { get { return _header; } }
@@ -83,42 +83,40 @@ namespace DungeonCrawler.GameLogic
             Console.SetCursorPosition(5, 2);
             Console.Write(ClearRow);
             Console.SetCursorPosition(5, 2);
-            Console.Write($"Name: {player.Name} Health: {player.Health}");
+            Console.Write($"Name: {player.Name}: {player.Health}");
         }
 
-        public static void PlayerAttacksText(Player player, Enemy enemy, int result)
+        public static void AttackText(Player player, Enemy enemy, bool isPlayerTheAttacker, bool isCounterAttacking)
         {
-            ClearEventText();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-            Console.ForegroundColor = player.VisibleColour;
-            Console.SetCursorPosition(5, 4);
-            Console.Write($"{player.Name} rolls {player.AttackDice}");
-            Console.SetCursorPosition(5, 5);
-            Console.Write($"{enemy.Name} 'the {enemy}' rolls {enemy.DefenceDice}.");
-            Console.SetCursorPosition(5, 6);
-            Console.Write($"{player.Name} made {result} damage.");
-        }
-
-        public static void EnemyAttacksText(Player player, Enemy enemy, int result)
-        {
-            ClearEventText();
-
-            Console.ForegroundColor = enemy.VisibleColour;
-            Console.SetCursorPosition(5, 4);
-            Console.Write($"{enemy.Name} 'the {enemy}' rolls {enemy.AttackDice}");
-            Console.SetCursorPosition(5, 5);
-            Console.Write($"{player.Name} rolls {player.DefenceDice}.");
-            Console.SetCursorPosition(5, 6);
-            Console.Write($"{enemy.Name} made {result} damage.");
+            if (!isCounterAttacking)
+            {
+                Console.SetCursorPosition(4, 4);
+                Console.Write(ClearRow);
+                Console.SetCursorPosition(4, 4);
+                Console.Write(isPlayerTheAttacker ? 
+                    $"{player} ({player.AttackDice}) attacked {enemy} ({enemy.DefenceDice}) and made {Combat.Result} dmg." :
+                    $"{enemy} ({enemy.AttackDice}) attacked {player} ({player.DefenceDice}) and made {Combat.Result} dmg.");
+            }
+            else
+            {
+                Console.SetCursorPosition(4, 6);
+                Console.Write(ClearRow);
+                Console.SetCursorPosition(4, 6);
+                Console.Write(isPlayerTheAttacker ?
+                    $"{enemy} ({enemy.AttackDice}) counter attacked and made {Combat.Result} dmg." :
+                    $"{player} ({player.AttackDice}) counter attacked and made {Combat.Result} dmg.");
+            }
         }
 
         public static void ClearEventText()
         {
-            Console.SetCursorPosition(5, 4);
+            Console.SetCursorPosition(4, 4);
             Console.Write(ClearRow);
-            Console.SetCursorPosition(5, 5);
+            Console.SetCursorPosition(4, 5);
             Console.Write(ClearRow);
-            Console.SetCursorPosition(5, 6);
+            Console.SetCursorPosition(4, 6);
             Console.Write(ClearRow);
         }
     }
