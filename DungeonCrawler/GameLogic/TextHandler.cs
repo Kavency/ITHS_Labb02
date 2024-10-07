@@ -86,7 +86,7 @@ namespace DungeonCrawler.GameLogic
             Console.Write($"Name: {player.Name}: {player.Health}");
         }
 
-        public static void AttackText(Player player, Enemy enemy, bool isPlayerTheAttacker, bool isCounterAttacking)
+        public static void AttackText(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
@@ -108,6 +108,12 @@ namespace DungeonCrawler.GameLogic
                     $"{enemy} ({enemy.AttackDice}) counter attacked and made {Combat.Result} dmg." :
                     $"{player} ({player.AttackDice}) counter attacked and made {Combat.Result} dmg.");
             }
+
+        public static void PlayerDiedText(Player player)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(DeathText);
         }
 
         public static void ClearEventText()

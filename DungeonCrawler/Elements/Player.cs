@@ -2,7 +2,7 @@
 
 namespace DungeonCrawler.Elements
 {
-    internal class Player : LevelElement
+    internal class Player : LevelElement, ICharacter
     {
         public string Name { get; set; }
         public int Health { get; set; }
@@ -20,7 +20,7 @@ namespace DungeonCrawler.Elements
             Dice defenceDice = new(1, 6, 1);
 
             Name = NameProvider.GetRandomName();
-            Health = 100;
+            Health = 10;
             VisibleColour = ConsoleColor.Yellow;
             MapSymbol = '@';
             IsVisible = true;
@@ -38,7 +38,7 @@ namespace DungeonCrawler.Elements
                 case ConsoleKey.W:
                     if (CollisionController.CheckForCollision(Directions.North, this))
                     {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
                         break;
                     }
                     else
@@ -51,7 +51,7 @@ namespace DungeonCrawler.Elements
                 case ConsoleKey.S:
                     if (CollisionController.CheckForCollision(Directions.South, this))
                     {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
                         break;
                     }
                     else
@@ -64,7 +64,7 @@ namespace DungeonCrawler.Elements
                 case ConsoleKey.A:
                     if (CollisionController.CheckForCollision(Directions.West, this))
                     {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
                         break;
                     }
                     else
@@ -72,13 +72,13 @@ namespace DungeonCrawler.Elements
                         CollisionController.ClearOldPosition(this);
                         this.XPosition--;
                         Draw();
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
                         break;
                     }
                 case ConsoleKey.D:
                     if (CollisionController.CheckForCollision(Directions.East, this))
                     {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy, true);
+                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
                         break;
                     }
                     else
@@ -93,6 +93,10 @@ namespace DungeonCrawler.Elements
                 case ConsoleKey.Escape:
                     Game.gameState = GameState.GameOver;
                     break;
+                case ConsoleKey.P:
+                    this.Health = 0;
+                    this.Died();
+                    break;
             }
         }
 
@@ -105,6 +109,14 @@ namespace DungeonCrawler.Elements
         public override string ToString()
         {
             return $"{this.Name}";
+        }
+
+        public void Died() 
+        {
+            CanMove = false;
+            TextHandler.PlayerDiedText(this);
+            Console.ReadKey();
+            Game.gameState = GameState.GameOver;
         }
     }
 }
