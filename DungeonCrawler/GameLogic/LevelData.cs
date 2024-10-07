@@ -45,7 +45,6 @@ namespace DungeonCrawler.GameLogic
                 case 64:
                     Player player = new();
                     _elements.Add(player);
-                    (player.XPosition, player.YPosition) = Console.GetCursorPosition();
                     SetElementPosition(player);
                     player.Draw();
                     break;

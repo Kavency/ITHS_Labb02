@@ -6,12 +6,12 @@ namespace DungeonCrawler.Elements
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        public bool CanMove { get; set; } = true;
+        public bool IsDead { get; set; } = false;
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
-        ConsoleKeyInfo keyInfo;
-        ConsoleKey keyPressed;
+        private ConsoleKeyInfo _keyInfo;
+        private ConsoleKey _keyPressed;
 
         public Player()
         {
@@ -30,10 +30,10 @@ namespace DungeonCrawler.Elements
 
         public void Move()
         {
-            keyInfo = Console.ReadKey(true);
-            keyPressed = keyInfo.Key;
+            _keyInfo = Console.ReadKey(true);
+            _keyPressed = _keyInfo.Key;
 
-            switch (keyPressed)
+            switch (_keyPressed)
             {
                 case ConsoleKey.W:
                     if (CollisionController.CheckForCollision(Directions.North, this))
@@ -45,7 +45,6 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.YPosition--;
-                        Draw();
                         break;
                     }
                 case ConsoleKey.S:
@@ -58,7 +57,6 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.YPosition++;
-                        Draw();
                         break;
                     }
                 case ConsoleKey.A:
@@ -71,8 +69,6 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.XPosition--;
-                        Draw();
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
                         break;
                     }
                 case ConsoleKey.D:
@@ -85,14 +81,15 @@ namespace DungeonCrawler.Elements
                     {
                         CollisionController.ClearOldPosition(this);
                         this.XPosition++;
-                        Draw();
                         break;
                     }
                 case ConsoleKey.Spacebar:
                     break;
                 case ConsoleKey.Escape:
-                    Game.gameState = GameState.GameOver;
-                    break;
+                    {
+                        this.IsDead = true;
+                        return;
+                    }
                 case ConsoleKey.P:
                     this.Health = 0;
                     this.Died();
@@ -103,7 +100,7 @@ namespace DungeonCrawler.Elements
         public void Update()
         {
             TextHandler.PlayerStatsText(this);
-            Draw();
+            this.Draw();
         }
 
         public override string ToString()
@@ -113,7 +110,7 @@ namespace DungeonCrawler.Elements
 
         public void Died() 
         {
-            CanMove = false;
+            IsDead = true;
             Game.gameState = GameState.GameOver;
             TextHandler.PlayerDiedText(this);
             Console.ReadKey();

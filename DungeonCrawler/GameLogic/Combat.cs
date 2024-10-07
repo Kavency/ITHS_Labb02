@@ -18,7 +18,7 @@ namespace DungeonCrawler.GameLogic
 
             defender.Health -= _result;
             TextHandler.AttackText(attacker, defender, isCounterAttacking: false);
-            Thread.Sleep(1000);
+            Thread.Sleep(250);
 
             if (defender.Health <= 0)
             {
@@ -42,7 +42,7 @@ namespace DungeonCrawler.GameLogic
                 else
                 {
                     TextHandler.AttackText(attacker, defender, isCounterAttacking: true);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(250);
                 }
 
             }
