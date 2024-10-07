@@ -23,7 +23,7 @@ namespace DungeonCrawler.Elements
             Draw();
         }
 
-        public void Move()
+        public override void Move()
         {
             Random rnd = new();
             int direction = rnd.Next(0, 4);

@@ -28,7 +28,7 @@ namespace DungeonCrawler.Elements
             DefenceDice = defenceDice;
         }
 
-        public void PlayerMovement()
+        public void Move()
         {
             keyInfo = Console.ReadKey(true);
             keyPressed = keyInfo.Key;
@@ -114,9 +114,9 @@ namespace DungeonCrawler.Elements
         public void Died() 
         {
             CanMove = false;
+            Game.gameState = GameState.GameOver;
             TextHandler.PlayerDiedText(this);
             Console.ReadKey();
-            Game.gameState = GameState.GameOver;
         }
     }
 }

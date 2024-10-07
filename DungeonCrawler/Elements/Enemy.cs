@@ -14,6 +14,7 @@ namespace DungeonCrawler.Elements
             LevelData.MapElements.Remove(this);
         }
         abstract public void Update();
+        abstract public void Move();
     }
     
 
