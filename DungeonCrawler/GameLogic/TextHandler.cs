@@ -51,6 +51,7 @@ namespace DungeonCrawler.GameLogic
             "█                                                █\r\n" +
             "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
 
+        static private string _deathText =
 
         static private string _clearRow = "                                                                          \r";
 
@@ -58,6 +59,7 @@ namespace DungeonCrawler.GameLogic
         public static string Header { get { return _header; } }
         public static string ClearRow { get { return _clearRow; } }
         public static string NameBox { get { return _nameBox; } }
+        public static string DeathText { get { return _deathText; } }
 
         public static void MainMenuText()
         {
