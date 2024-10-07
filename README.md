@@ -15,7 +15,7 @@
 - [x] Spelaren har ett synfält som sträcker sig i en radie 5 steg bort från spelarens position.
   - [x] Fiender som är utanför synfältet syns ej (men uppdateras ändå varje omgång).
   - [x] Väggarna försvinner inte när man väl upptäckt dem första gången.
-- [ ] Går spelaren på en fiende ska attack, defence, och skada avgöras med hjälp av tärningsslag.
-  - [ ] Fienden gör direkt en motattack (om den överlever).
-- [ ] Går en fiende in i spelaren görs samma sekvens som i föregående punkt, men fienden attackerar först.
-  - [ ] Spelaren gör en motattack (om den överlever).
+- [x] Går spelaren på en fiende ska attack, defence, och skada avgöras med hjälp av tärningsslag.
+  - [x] Fienden gör direkt en motattack (om den överlever).
+- [x] Går en fiende in i spelaren görs samma sekvens som i föregående punkt, men fienden attackerar först.
+  - [x] Spelaren gör en motattack (om den överlever).
