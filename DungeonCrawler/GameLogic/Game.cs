@@ -1,19 +1,18 @@
 ﻿using DungeonCrawler.Elements;
-using System.Xml.Linq;
 
 namespace DungeonCrawler.GameLogic
 {
     internal class Game
     {
-        Player player;
-        public static GameState gameState = GameState.PlayerTurn;
+        public static Player player;
+        public static GameState gameState;
 
         /// <summary>
         /// This sets the game up by loading the level and creating the player.
         /// </summary>
         public void SetupGame()
         {
-            string filePath = @"Levels\TestLevel.txt";
+            string filePath = @"Levels\Level1.txt";
             
             Console.Clear();
             TextHandler.NameBoxText();
@@ -35,8 +34,8 @@ namespace DungeonCrawler.GameLogic
             player.Name = playerName;
             gameState = GameState.PlayerTurn;
             
-            player.Update();
             DrawGame();
+            player.Draw();
         }
 
         /// <summary>
@@ -45,76 +44,26 @@ namespace DungeonCrawler.GameLogic
         /// </summary>
         public void PlayGame()
         {
-            
-
             while (gameState != GameState.GameOver)
             {
                 if (gameState == GameState.PlayerTurn)
                 {
                     PlayerTurn();
-                    DrawGame();
                     if (gameState == GameState.GameOver)
                         break;
                 }
-                else if (gameState == GameState.EnemyTurn || gameState != GameState.GameOver)
+                else if (gameState == GameState.EnemyTurn)
                 {
                     EnemyTurn();
-                    DrawGame();
-
                 }
 
-                Thread.Sleep(250);
+                Thread.Sleep(50);
             }
         }
 
         /// <summary>
         /// Draws the game to the screen based on visibility.
         /// </summary>
-        public void DrawGame()
-        {
-            LevelData.MapElements.Clear();
-        }
-
-        /// <summary>
-        /// Handles the player turn in the game loop.
-        /// </summary>
-        public void PlayerTurn()
-        {
-            player.Move();
-            if(gameState != GameState.GameOver)
-            {
-                player.Update();
-                gameState = GameState.EnemyTurn;
-            }
-        }
-
-        /// <summary>
-        /// Handles the enemy turn in the game loop.
-        /// </summary>
-        public void EnemyTurn()
-        {
-            foreach (var item in LevelData.MapElements)
-            {
-                if(gameState != GameState.GameOver)
-                {
-                    if (item is Rat rat)
-                    {
-                        DistanceController.ViewRange(player, rat);
-                        rat.Update();
-                        gameState = GameState.PlayerTurn;
-                    }
-                    else if (item is Snake snake)
-                    {
-                        DistanceController.ViewRange(player, snake);
-                        DistanceController.DistanceToPlayer(player, snake);
-                        snake.Update();
-                        gameState = GameState.PlayerTurn;
-                    }
-                }
-            }
-        }
-
-
         public void DrawGame()
         {
             TextHandler.PlayerStatsText(player);
@@ -134,16 +83,67 @@ namespace DungeonCrawler.GameLogic
                     Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                     wall.Draw();
                 }
-
-        /// <summary>
-        /// Resets the game by clearing the list of elements.
-        /// </summary>
-        public void ResetGame()
+                if(item is Enemy enemy)
                 {
                     DistanceController.ViewRange(player, enemy);
                     enemy.Draw();
                 }
             }
+        }
+
+        /// <summary>
+        /// Handles the player turn in the game loop.
+        /// </summary>
+        public void PlayerTurn()
+        {
+            player.Move();
+            player.Update();
+            
+            if (player.IsDead)
+            {
+                gameState = GameState.GameOver;
+                return;
+            }
+            else
+                gameState = GameState.EnemyTurn;
+
+            DrawGame();
+        }
+
+        /// <summary>
+        /// Handles the enemy turn in the game loop.
+        /// </summary>
+        public void EnemyTurn()
+        {
+            foreach (var item in LevelData.MapElements)
+            {
+                if (item is Rat rat)
+                {
+                    rat.Update();
+                }
+                else if (item is Snake snake)
+                {
+                    snake.Update();
+                }
+
+                if (player.IsDead)
+                {
+                    gameState = GameState.GameOver;
+                    return;
+                }
+                else
+                    gameState = GameState.PlayerTurn;
+            }
+
+            DrawGame();
+        }
+
+        /// <summary>
+        /// Resets the game by clearing the list of elements.
+        /// </summary>
+        public void ResetGame()
+        {
+            LevelData.MapElements.Clear();
         }
     }
 }
