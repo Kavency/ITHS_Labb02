@@ -8,6 +8,9 @@ namespace DungeonCrawler.GameLogic
         Player player;
         public static GameState gameState = GameState.PlayerTurn;
 
+        /// <summary>
+        /// This sets the game up by loading the level and creating the player.
+        /// </summary>
         public void SetupGame()
         {
             string filePath = @"Levels\TestLevel.txt";
@@ -36,6 +39,10 @@ namespace DungeonCrawler.GameLogic
             DrawGame();
         }
 
+        /// <summary>
+        /// This is the main game loop. Alternating the game state between the player
+        /// and the enemies. Exiting this will return to main menu.
+        /// </summary>
         public void PlayGame()
         {
             
@@ -60,11 +67,17 @@ namespace DungeonCrawler.GameLogic
             }
         }
 
-        public void ResetGame()
+        /// <summary>
+        /// Draws the game to the screen based on visibility.
+        /// </summary>
+        public void DrawGame()
         {
             LevelData.MapElements.Clear();
         }
 
+        /// <summary>
+        /// Handles the player turn in the game loop.
+        /// </summary>
         public void PlayerTurn()
         {
             player.Move();
@@ -75,6 +88,9 @@ namespace DungeonCrawler.GameLogic
             }
         }
 
+        /// <summary>
+        /// Handles the enemy turn in the game loop.
+        /// </summary>
         public void EnemyTurn()
         {
             foreach (var item in LevelData.MapElements)
@@ -118,7 +134,11 @@ namespace DungeonCrawler.GameLogic
                     Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                     wall.Draw();
                 }
-                if(item is Enemy enemy)
+
+        /// <summary>
+        /// Resets the game by clearing the list of elements.
+        /// </summary>
+        public void ResetGame()
                 {
                     DistanceController.ViewRange(player, enemy);
                     enemy.Draw();
