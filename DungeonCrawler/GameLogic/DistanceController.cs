@@ -24,15 +24,15 @@ namespace DungeonCrawler.GameLogic
             }
         }
 
-        public static void DistanceToPlayer(Player player, Snake snake)
+        public static void DistanceToPlayer(ICharacter player, ICharacter enemy)
         {
             int distance = 0;
-            distance = (int)Math.Sqrt(Math.Pow((snake.XPosition - player.XPosition), 2)
-                + Math.Pow((snake.YPosition - player.YPosition), 2));
+            distance = (int)Math.Sqrt(Math.Pow((enemy.XPosition - player.XPosition), 2)
+                + Math.Pow((enemy.YPosition - player.YPosition), 2));
 
             if(distance < 3)
             {
-                snake.Move();
+                enemy.Move();
             }
         }
     }
