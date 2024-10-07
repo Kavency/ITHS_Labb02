@@ -1,5 +1,4 @@
-﻿using DungeonCrawler.Elements;
-using DungeonCrawler.GameLogic;
+﻿using DungeonCrawler.GameLogic;
 
 namespace DungeonCrawler
 {
@@ -27,8 +26,6 @@ namespace DungeonCrawler
                     game.PlayGame();
                     game.ResetGame();
                 }
-
-                
             }
         }
     }
