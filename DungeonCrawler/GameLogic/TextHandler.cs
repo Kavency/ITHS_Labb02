@@ -97,18 +97,15 @@ namespace DungeonCrawler.GameLogic
                 Console.SetCursorPosition(4, 4);
                 Console.Write(ClearRow);
                 Console.SetCursorPosition(4, 4);
-                Console.Write(isPlayerTheAttacker ? 
-                    $"{player} ({player.AttackDice}) attacked {enemy} ({enemy.DefenceDice}) and made {Combat.Result} dmg." :
-                    $"{enemy} ({enemy.AttackDice}) attacked {player} ({player.DefenceDice}) and made {Combat.Result} dmg.");
+                Console.Write($"{attacker} ({attacker.AttackDice}) attacked {defender} ({defender.DefenceDice}) and made {Combat.Result} dmg.");
             }
             else
             {
                 Console.SetCursorPosition(4, 6);
                 Console.Write(ClearRow);
                 Console.SetCursorPosition(4, 6);
-                Console.Write(isPlayerTheAttacker ?
-                    $"{enemy} ({enemy.AttackDice}) counter attacked and made {Combat.Result} dmg." :
-                    $"{player} ({player.AttackDice}) counter attacked and made {Combat.Result} dmg.");
+                Console.Write($"{defender} ({defender.AttackDice}) counter attacked and made {Combat.Result} dmg.");
+            }
             }
 
         public static void PlayerDiedText(Player player)
