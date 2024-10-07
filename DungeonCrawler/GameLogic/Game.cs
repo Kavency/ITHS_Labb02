@@ -67,7 +67,7 @@ namespace DungeonCrawler.GameLogic
 
         public void PlayerTurn()
         {
-            player.PlayerMovement();
+            player.Move();
             if(gameState != GameState.GameOver)
             {
                 player.Update();
