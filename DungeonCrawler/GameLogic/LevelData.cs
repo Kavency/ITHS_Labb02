@@ -43,10 +43,9 @@ namespace DungeonCrawler.GameLogic
                     snake.Draw();
                     break;
                 case 64:
-                    Player player = new();
-                    _elements.Add(player);
-                    SetElementPosition(player);
-                    player.Draw();
+                    _elements.Add(Game.player);
+                    SetElementPosition(Game.player);
+                    Game.player.Draw();
                     break;
                 default:
                     Console.Write((char)characterAsInt);

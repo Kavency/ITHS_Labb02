@@ -4,7 +4,7 @@ namespace DungeonCrawler.GameLogic
 {
     internal class Game
     {
-        public static Player player;
+        public static Player player = new();
         public static GameState gameState;
 
         /// <summary>
@@ -30,7 +30,6 @@ namespace DungeonCrawler.GameLogic
             TextHandler.HeaderText();
 
             LevelData.Load(filePath);
-            player = (Player)LevelData.MapElements.Find(findPlayer => findPlayer.MapSymbol == '@');
             player.Name = playerName;
             gameState = GameState.PlayerTurn;
             
