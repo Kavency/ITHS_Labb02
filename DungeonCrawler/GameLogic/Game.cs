@@ -30,6 +30,7 @@ namespace DungeonCrawler.GameLogic
             LevelData.Load(filePath);
             player = (Player)LevelData.MapElements.Find(findPlayer => findPlayer.MapSymbol == '@');
             player.Name = playerName;
+            gameState = GameState.PlayerTurn;
             
             player.Update();
             DrawGame();
@@ -37,16 +38,31 @@ namespace DungeonCrawler.GameLogic
 
         public void PlayGame()
         {
+            
+
             while (gameState != GameState.GameOver)
             {
                 if (gameState == GameState.PlayerTurn)
+                {
                     PlayerTurn();
-                else if (gameState == GameState.EnemyTurn)
+                    DrawGame();
+                    if (gameState == GameState.GameOver)
+                        break;
+                }
+                else if (gameState == GameState.EnemyTurn || gameState != GameState.GameOver)
+                {
                     EnemyTurn();
+                    DrawGame();
 
-                DrawGame();
+                }
+
                 Thread.Sleep(250);
             }
+        }
+
+        public void ResetGame()
+        {
+            LevelData.MapElements.Clear();
         }
 
         public void PlayerTurn()
@@ -63,19 +79,23 @@ namespace DungeonCrawler.GameLogic
         {
             foreach (var item in LevelData.MapElements)
             {
-                if (item is Rat rat)
+                if(gameState != GameState.GameOver)
                 {
-                    DistanceController.ViewRange(player, rat);
-                    rat.Update();
-                }
-                else if (item is Snake snake)
-                {
-                    DistanceController.ViewRange(player, snake);
-                    DistanceController.DistanceToPlayer(player, snake);
-                    snake.Update();
+                    if (item is Rat rat)
+                    {
+                        DistanceController.ViewRange(player, rat);
+                        rat.Update();
+                        gameState = GameState.PlayerTurn;
+                    }
+                    else if (item is Snake snake)
+                    {
+                        DistanceController.ViewRange(player, snake);
+                        DistanceController.DistanceToPlayer(player, snake);
+                        snake.Update();
+                        gameState = GameState.PlayerTurn;
+                    }
                 }
             }
-            gameState = GameState.PlayerTurn;
         }
 
 

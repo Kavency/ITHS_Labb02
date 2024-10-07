@@ -131,7 +131,7 @@ namespace DungeonCrawler.GameLogic
                 Console.SetCursorPosition(4, 6);
                 Console.Write($"{defender} ({defender.AttackDice}) counter attacked and made {Combat.Result} dmg.");
             }
-            }
+        }
 
         public static void PlayerDiedText(Player player)
         {
