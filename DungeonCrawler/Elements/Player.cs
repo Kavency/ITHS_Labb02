@@ -6,7 +6,7 @@ namespace DungeonCrawler.Elements
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        public bool IsDead { get; set; } = false;
+        public bool IsAlive { get; set; }
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
@@ -24,6 +24,7 @@ namespace DungeonCrawler.Elements
             VisibleColour = ConsoleColor.Yellow;
             MapSymbol = '@';
             IsVisible = true;
+            IsAlive = true;
             AttackDice = attackDice;
             DefenceDice = defenceDice;
         }
