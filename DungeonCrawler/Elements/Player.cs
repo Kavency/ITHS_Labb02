@@ -29,6 +29,10 @@ namespace DungeonCrawler.Elements
             DefenceDice = defenceDice;
         }
 
+
+        /// <summary>
+        /// Handles the player movement.
+        /// </summary>
         public void Move()
         {
             _keyInfo = Console.ReadKey(true);
@@ -82,17 +86,29 @@ namespace DungeonCrawler.Elements
             }
         }
 
+
+        /// <summary>
+        /// Updates the player everly turn cycle.
+        /// </summary>
         public void Update()
         {
             TextHandler.PlayerStatsText(this);
             this.Draw();
         }
 
+
+        /// <summary>
+        /// Overrides the ToString to return the player name.
+        /// </summary>
         public override string ToString()
         {
             return $"{this.Name}";
         }
 
+
+        /// <summary>
+        /// Handles the player death.
+        /// </summary>
         public void Died() 
         {
             IsAlive = false;

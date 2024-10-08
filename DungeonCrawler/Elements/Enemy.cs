@@ -10,6 +10,10 @@ namespace DungeonCrawler.Elements
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
+
+        /// <summary>
+        /// Handles the mortals.
+        /// </summary>
         public void Died()
         {
             this.IsAlive = false;

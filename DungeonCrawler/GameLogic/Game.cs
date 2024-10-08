@@ -41,6 +41,7 @@ namespace DungeonCrawler.GameLogic
             player.Draw();
         }
 
+
         /// <summary>
         /// This is the main game loop. Alternating the game state between the player
         /// and the enemies. Exiting this will return to main menu.
@@ -65,6 +66,7 @@ namespace DungeonCrawler.GameLogic
                 Thread.Sleep(50);
             }
         }
+
 
         /// <summary>
         /// Draws the game to the screen based on visibility.
@@ -96,6 +98,7 @@ namespace DungeonCrawler.GameLogic
             }
         }
 
+
         /// <summary>
         /// Handles the player turn in the game loop.
         /// </summary>
@@ -114,6 +117,7 @@ namespace DungeonCrawler.GameLogic
 
             DrawGame();
         }
+
 
         /// <summary>
         /// Handles the enemy turn in the game loop.
@@ -145,6 +149,7 @@ namespace DungeonCrawler.GameLogic
 
             DrawGame();
         }
+
 
         /// <summary>
         /// Resets the game by clearing the list of elements.

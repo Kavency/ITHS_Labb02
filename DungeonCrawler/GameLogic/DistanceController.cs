@@ -6,11 +6,14 @@ namespace DungeonCrawler.GameLogic
 {
     internal static class DistanceController
     {
+        /// <summary>
+        /// Controls the view range.
+        /// </summary>
         public static void ViewRange(ICharacter player, LevelElement element)
         {
             
             int distance = 0;
-            distance = Formula(player, element);
+            distance = DistanceToPlayer(player, element);
 
             if (distance < 5)
             {
@@ -23,15 +26,12 @@ namespace DungeonCrawler.GameLogic
                 element.IsVisible = false;
         }
 
-        public static int DistanceToPlayer(ICharacter player, LevelElement enemy)
-        {
-            int distance = 0;
-            distance = Formula(player, enemy);
 
-            return distance;
-        }
-
-        public static int Formula(ICharacter player, LevelElement element)
+        /// <summary>
+        /// Calculates the distance between a specified object and the player.
+        /// </summary>
+        /// <returns>An int with the distance.</returns>
+        public static int DistanceToPlayer(ICharacter player, LevelElement element)
         {
             // Euclides Formula for distance  d = √[(x2 − x1)^2 + (y2 − y1)^2]
             return (int)Math.Sqrt(

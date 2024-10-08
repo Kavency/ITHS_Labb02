@@ -71,17 +71,30 @@ namespace DungeonCrawler.GameLogic
         public static string NameBox { get { return _nameBox; } }
         public static string DeathText { get { return _deathText; } }
 
+
+        /// <summary>
+        /// Prints the main menu.
+        /// </summary>
         public static void MainMenuText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(Title);
         }
+
+
+        /// <summary>
+        /// Prints the header.
+        /// </summary>
         public static void HeaderText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(Header);
         }
 
+
+        /// <summary>
+        /// Prints the name box for retrieving a name from the player.
+        /// </summary>
         public static void NameBoxText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -89,6 +102,10 @@ namespace DungeonCrawler.GameLogic
             Console.SetCursorPosition(5, 3);
         }
 
+
+        /// <summary>
+        /// Prints the the name and health of the player.
+        /// </summary>
         public static void PlayerStatsText(Player player)
         {
             Console.ForegroundColor = player.VisibleColour;
@@ -98,6 +115,10 @@ namespace DungeonCrawler.GameLogic
             Console.Write($"Name: {player.Name} - {player.Health} Health");
         }
 
+
+        /// <summary>
+        /// Prints out the action to the event window.
+        /// </summary>
         public static void AttackText(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -124,6 +145,10 @@ namespace DungeonCrawler.GameLogic
             }
         }
 
+
+        /// <summary>
+        /// :´(
+        /// </summary>
         public static void PlayerDiedText(Player player)
         {
             Console.Clear();
@@ -131,6 +156,10 @@ namespace DungeonCrawler.GameLogic
             Console.WriteLine(DeathText);
         }
 
+
+        /// <summary>
+        /// Clears the text in the event window.
+        /// </summary>
         public static void ClearEventText()
         {
             Console.SetCursorPosition(4, 4);

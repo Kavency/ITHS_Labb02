@@ -8,6 +8,10 @@ abstract internal class LevelElement
     public ConsoleColor VisibleColour { get; set; }
     public ConsoleColor InVisibleColour { get; } = ConsoleColor.Black;
 
+
+    /// <summary>
+    /// Draws the corresponding symbol to the screen.
+    /// </summary>
     public virtual void Draw()
     {
         if (IsVisible)

@@ -32,6 +32,11 @@ namespace DungeonCrawler.GameLogic
                 "Farah", "Hadley", "Iggy", "Lyra", "Aurora", "Seraphina", 
                 "Rosalie", "Isadora", "Isabella", "Lyra" };
 
+
+        /// <summary>
+        /// Gets a name from the list of names.
+        /// </summary>
+        /// <returns>a string that holds a name.</returns>
         static public string GetRandomName()
         {
             Random rnd = new();

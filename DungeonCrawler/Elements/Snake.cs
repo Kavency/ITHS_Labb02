@@ -4,7 +4,6 @@ namespace DungeonCrawler.Elements
 {
     internal class Snake : Enemy
     {
-        // Giftormar?
         public Snake()
         {
             // Snake: HP = 25, Attack = 3d4+2, Defence = 1d8+5 
@@ -19,12 +18,21 @@ namespace DungeonCrawler.Elements
             AttackDice = attackDice;
             DefenceDice = defenceDice;
         }
+
+
+        /// <summary>
+        /// Updates the snake every turn cycle.
+        /// </summary>
         public override void Update()
         {
             Move();
             Draw();
         }
 
+
+        /// <summary>
+        /// Handles the snake movement.
+        /// </summary>
         public override void Move()
         {
             int direction = 0;
@@ -72,6 +80,10 @@ namespace DungeonCrawler.Elements
             }
         }
 
+
+        /// <summary>
+        /// Override ToString to return snake name.
+        /// </summary>
         public override string ToString()
         {
             return $"{this.Name} 'The Snake'";

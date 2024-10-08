@@ -6,9 +6,12 @@ namespace DungeonCrawler.GameLogic
 {
     static class Timer
     {
-        public static async Task CountDown()
+        /// <summary>
+        /// Starts a timer on default 5 seconds.
+        /// </summary>
+        public static async Task CountDown(int seconds = 5)
         {
-            await Task.Delay(6000);
+            await Task.Delay(seconds * 1000);
             TextHandler.ClearEventText();
         }
     }

@@ -7,6 +7,7 @@ namespace DungeonCrawler.GameLogic
         static private List<LevelElement> _elements = new();
         static public List<LevelElement> MapElements { get { return _elements; } }
 
+
         /// <summary>
         /// Reads each character in a .txt file in order to add it to a list.
         /// </summary>
@@ -23,6 +24,7 @@ namespace DungeonCrawler.GameLogic
                 }
             }
         }
+
 
         /// <summary>
         /// Adds an instance of found elements to the list of elements.
@@ -60,6 +62,7 @@ namespace DungeonCrawler.GameLogic
                     break;
             }
         }
+
 
         /// <summary>
         /// Sets the position for the element.

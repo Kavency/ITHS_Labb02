@@ -12,6 +12,11 @@
             Modifier = modifier;
         }
 
+
+        /// <summary>
+        /// Throws the dice to calculate the outcome of combat.
+        /// </summary>
+        /// <returns>An int as result.</returns>
         public int ThrowDie()
         {
             Random rnd = new();
@@ -25,6 +30,11 @@
             return result += Modifier;
         }
 
+
+        /// <summary>
+        /// ToString override for Dice object.
+        /// </summary>
+        /// <returns>A string with no of dices, no of sides and a modifier.</returns>
         public override string ToString()
         {
             return $"{NoOfDice}d{NoOfSides}+{Modifier}";

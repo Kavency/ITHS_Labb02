@@ -6,7 +6,11 @@ namespace DungeonCrawler.GameLogic
     {
         private static int _result = 0;
         public static int Result { get { return _result; } }
-        public static void Attack(ICharacter attacker, ICharacter? defender)
+
+        /// <summary>
+        /// Attack and counter attack logic.
+        /// </summary>
+        public static void Attack(ICharacter attacker, ICharacter defender)
         {
             if (attacker is null || defender is null)
                 return;
@@ -17,9 +21,8 @@ namespace DungeonCrawler.GameLogic
                 _result = 0;
 
             defender.Health -= _result;
-            TextHandler.AttackText(attacker, defender, isCounterAttacking: false);
-            Timer.CountDown();
-            Thread.Sleep(250);
+
+            StartOutputProcess(attacker, defender, false);
 
             if (defender.Health <= 0)
             {
@@ -27,17 +30,14 @@ namespace DungeonCrawler.GameLogic
             }
             else
             {
-                // Counter attack...
                 _result = PerformAttack(defender, attacker);
                     
                 if (_result < 0)
                     _result = 0;
                     
                 attacker.Health -= _result;
-                    
-                TextHandler.AttackText(attacker, defender, isCounterAttacking: true);
-                Timer.CountDown();
-                Thread.Sleep(250);
+
+                StartOutputProcess(attacker, defender, true);
 
                 if (attacker.Health <= 0)
                 {
@@ -46,9 +46,24 @@ namespace DungeonCrawler.GameLogic
                 }
             }
 
+
+            /// <summary>
+            /// Calculates the combat result by throwing dices.
+            /// </summary>
             static int PerformAttack(ICharacter attacker, ICharacter defender)
             {
                 return attacker.AttackDice.ThrowDie() - defender.DefenceDice.ThrowDie();
+            }
+
+
+            /// <summary>
+            /// Sends the characters for printout and starts timer.
+            /// </summary>
+            static void StartOutputProcess(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
+            {
+                TextHandler.AttackText(attacker, defender, isCounterAttacking);
+                Timer.CountDown();
+                Thread.Sleep(250);
             }
         }
     }

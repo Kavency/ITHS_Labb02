@@ -19,12 +19,20 @@ namespace DungeonCrawler.Elements
             DefenceDice = defenceDice;
         }
 
+
+        /// <summary>
+        /// Updates the rat every turn cycle.
+        /// </summary>
         public override void Update()
         {
             Move();
             Draw();
         }
 
+
+        /// <summary>
+        /// Handles the movement.
+        /// </summary>
         public override void Move()
         {
             Random rnd = new();
@@ -48,6 +56,10 @@ namespace DungeonCrawler.Elements
             }
         }
 
+
+        /// <summary>
+        /// Overide ToString to return rat name.
+        /// </summary>
         public override string ToString()
         {
             return $"{this.Name} 'the Rat'";

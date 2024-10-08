@@ -11,6 +11,10 @@
             HasBeenDetected = false;
         }
 
+
+        /// <summary>
+        /// Draws the wall to screen based on its visibility.
+        /// </summary>
         public override void Draw()
         {
             Console.SetCursorPosition(XPosition, YPosition);
@@ -25,7 +29,6 @@
                 Console.ForegroundColor = InVisibleColour;
             
             Console.Write(MapSymbol);
-            //Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }
