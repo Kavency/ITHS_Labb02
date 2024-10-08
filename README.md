@@ -6,7 +6,7 @@
   - [x] Korrekt hantera de olika elementen enligt beskrivningen i labben.
 - [x] Fiendetyperna rat och snakes ska finnas.
   - [x] Ha unika stats.
-  - [ ] Deras beteenden (rörelsemönster) ska fungera enligt beskrivningen i labben.
+  - [x] Deras beteenden (rörelsemönster) ska fungera enligt beskrivningen i labben.
 - [x] Appen ska ha abstrakta basklasser “LevelElement” och “Enemy”.
   - [x] Klassen “Wall” ärver direkt av “LevelElement”.
   - [x] Klasserna “Rat” och “Snake” ärver direkt av “Enemy” (indirekt av “LevelElement”).
