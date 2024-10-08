@@ -20,7 +20,7 @@ namespace DungeonCrawler.Elements
             Dice defenceDice = new(1, 6, 1);
 
             Name = NameProvider.GetRandomName();
-            Health = 10;
+            Health = 100;
             VisibleColour = ConsoleColor.Yellow;
             MapSymbol = '@';
             IsVisible = true;
@@ -33,68 +33,52 @@ namespace DungeonCrawler.Elements
         {
             _keyInfo = Console.ReadKey(true);
             _keyPressed = _keyInfo.Key;
+            Directions directionMoved = new();
 
             switch (_keyPressed)
             {
                 case ConsoleKey.W:
-                    if (CollisionController.CheckForCollision(Directions.North, this))
-                    {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
-                        break;
-                    }
-                    else
-                    {
-                        CollisionController.ClearOldPosition(this);
-                        this.YPosition--;
-                        break;
-                    }
-                case ConsoleKey.S:
-                    if (CollisionController.CheckForCollision(Directions.South, this))
-                    {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
-                        break;
-                    }
-                    else
-                    {
-                        CollisionController.ClearOldPosition(this);
-                        this.YPosition++;
-                        break;
-                    }
-                case ConsoleKey.A:
-                    if (CollisionController.CheckForCollision(Directions.West, this))
-                    {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
-                        break;
-                    }
-                    else
-                    {
-                        CollisionController.ClearOldPosition(this);
-                        this.XPosition--;
-                        break;
-                    }
-                case ConsoleKey.D:
-                    if (CollisionController.CheckForCollision(Directions.East, this))
-                    {
-                        Combat.Attack(this, CollisionController.collisionObject as Enemy);
-                        break;
-                    }
-                    else
-                    {
-                        CollisionController.ClearOldPosition(this);
-                        this.XPosition++;
-                        break;
-                    }
-                case ConsoleKey.Spacebar:
+                    directionMoved = Directions.North;
                     break;
+                case ConsoleKey.S:
+                    directionMoved = Directions.South;
+                    break;
+                case ConsoleKey.A:
+                    directionMoved = Directions.West;
+                    break;
+                case ConsoleKey.D:
+                    directionMoved = Directions.East;
+                    break;
+                case ConsoleKey.Spacebar:
+                    return;
                 case ConsoleKey.Escape:
                     {
-                        this.IsDead = true;
+                        this.IsAlive = false;
                         return;
                     }
-                case ConsoleKey.P:
+                case ConsoleKey.P: // Insta death for debugging.
                     this.Health = 0;
                     this.Died();
                     break;
+                default:
+                    return;
+            }
+
+            if (CollisionController.CheckForCollision(directionMoved, this))
+            {
+                Combat.Attack(this, CollisionController.collisionObject as Enemy);
+            }
+            else
+            {
+                CollisionController.ClearOldPosition(this);
+                if (directionMoved == Directions.North)
+                    this.YPosition--;
+                else if (directionMoved == Directions.South)
+                    this.YPosition++;
+                else if (directionMoved == Directions.West)
+                    this.XPosition--;
+                else if (directionMoved == Directions.East)
+                    this.XPosition++;
             }
         }
 
@@ -111,7 +95,7 @@ namespace DungeonCrawler.Elements
 
         public void Died() 
         {
-            IsDead = true;
+            IsAlive = false;
             Game.gameState = GameState.GameOver;
             TextHandler.PlayerDiedText(this);
             Console.ReadKey();

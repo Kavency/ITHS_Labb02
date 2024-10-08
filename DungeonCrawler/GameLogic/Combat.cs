@@ -18,6 +18,7 @@ namespace DungeonCrawler.GameLogic
 
             defender.Health -= _result;
             TextHandler.AttackText(attacker, defender, isCounterAttacking: false);
+            Timer.CountDown();
             Thread.Sleep(250);
 
             if (defender.Health <= 0)
@@ -34,27 +35,20 @@ namespace DungeonCrawler.GameLogic
                     
                 attacker.Health -= _result;
                     
+                TextHandler.AttackText(attacker, defender, isCounterAttacking: true);
+                Timer.CountDown();
+                Thread.Sleep(250);
+
                 if (attacker.Health <= 0)
                 {
                     attacker.Died();
                     return;
                 }
-                else
-                {
-                    TextHandler.AttackText(attacker, defender, isCounterAttacking: true);
-                    Thread.Sleep(250);
-                }
-
             }
 
             static int PerformAttack(ICharacter attacker, ICharacter defender)
             {
                 return attacker.AttackDice.ThrowDie() - defender.DefenceDice.ThrowDie();
-            }
-
-            static void WasKilled(ICharacter WasKilled)
-            {
-                WasKilled.Died();
             }
         }
     }
