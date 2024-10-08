@@ -8,7 +8,7 @@ namespace DungeonCrawler.GameLogic
     {
         public static async Task CountDown()
         {
-            await Task.Delay(5000);
+            await Task.Delay(6000);
             TextHandler.ClearEventText();
         }
     }
