@@ -1,15 +1,16 @@
 ﻿using DungeonCrawler.Elements;
+using System.Numerics;
+using System.Xml.Linq;
 
 namespace DungeonCrawler.GameLogic
 {
     internal static class DistanceController
     {
-        public static void ViewRange(Player player, LevelElement element)
+        public static void ViewRange(ICharacter player, LevelElement element)
         {
-            // Euclides Formula for distance  d = √[(x2 − x1)^2 + (y2 − y1)^2]
+            
             int distance = 0;
-            distance = (int)Math.Sqrt(Math.Pow((element.XPosition - player.XPosition), 2) 
-                + Math.Pow((element.YPosition - player.YPosition), 2));
+            distance = Formula(player, element);
 
             if (distance < 5)
             {
@@ -19,21 +20,23 @@ namespace DungeonCrawler.GameLogic
                     wall.HasBeenDetected = true;
             }
             else
-            {
                 element.IsVisible = false;
-            }
         }
 
-        public static void DistanceToPlayer(ICharacter player, ICharacter enemy)
+        public static int DistanceToPlayer(ICharacter player, LevelElement enemy)
         {
             int distance = 0;
-            distance = (int)Math.Sqrt(Math.Pow((enemy.XPosition - player.XPosition), 2)
-                + Math.Pow((enemy.YPosition - player.YPosition), 2));
+            distance = Formula(player, enemy);
 
-            if(distance < 3)
-            {
-                enemy.Move();
-            }
+            return distance;
+        }
+
+        public static int Formula(ICharacter player, LevelElement element)
+        {
+            // Euclides Formula for distance  d = √[(x2 − x1)^2 + (y2 − y1)^2]
+            return (int)Math.Sqrt(
+            Math.Pow((element.XPosition - player.XPosition), 2)
+                + Math.Pow((element.YPosition - player.YPosition), 2));
         }
     }
 }

@@ -4,20 +4,24 @@ namespace DungeonCrawler.GameLogic
 {
     internal class Game
     {
-        public static Player player = new();
+        public static Player player;
         public static GameState gameState;
+        public static LevelElement deadElement = null;
+            
 
         /// <summary>
         /// This sets the game up by loading the level and creating the player.
         /// </summary>
         public void SetupGame()
         {
+            //string filePath = @"Levels\TestLevel.txt";
             string filePath = @"Levels\Level1.txt";
             
             Console.Clear();
             TextHandler.NameBoxText();
             Console.CursorVisible = true;
-            
+
+            player = new();
             string playerName = Console.ReadLine().Trim();
             if (playerName == "")
             {
@@ -55,6 +59,8 @@ namespace DungeonCrawler.GameLogic
                 {
                     EnemyTurn();
                 }
+
+                DrawGame();
 
                 Thread.Sleep(50);
             }
@@ -98,7 +104,7 @@ namespace DungeonCrawler.GameLogic
             player.Move();
             player.Update();
             
-            if (player.IsDead)
+            if (!player.IsAlive)
             {
                 gameState = GameState.GameOver;
                 return;
@@ -125,7 +131,7 @@ namespace DungeonCrawler.GameLogic
                     snake.Update();
                 }
 
-                if (player.IsDead)
+                if (!player.IsAlive)
                 {
                     gameState = GameState.GameOver;
                     return;
@@ -133,6 +139,9 @@ namespace DungeonCrawler.GameLogic
                 else
                     gameState = GameState.PlayerTurn;
             }
+
+            if (deadElement != null)
+                LevelData.MapElements.Remove(deadElement);
 
             DrawGame();
         }

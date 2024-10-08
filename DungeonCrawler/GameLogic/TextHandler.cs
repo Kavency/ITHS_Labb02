@@ -122,14 +122,20 @@ namespace DungeonCrawler.GameLogic
                 Console.SetCursorPosition(4, 4);
                 Console.Write(ClearRow);
                 Console.SetCursorPosition(4, 4);
-                Console.Write($"{attacker} ({attacker.AttackDice}) attacked {defender} ({defender.DefenceDice}) and made {Combat.Result} dmg.");
+                if (defender.Health <= 0)
+                    Console.Write($"{defender} died in the most horrible of ways.");
+                else
+                    Console.Write($"{attacker} ({attacker.AttackDice}) attacked {defender} ({defender.DefenceDice}) and made {Combat.Result} dmg.");
             }
             else
             {
                 Console.SetCursorPosition(4, 6);
                 Console.Write(ClearRow);
                 Console.SetCursorPosition(4, 6);
-                Console.Write($"{defender} ({defender.AttackDice}) counter attacked and made {Combat.Result} dmg.");
+                if (attacker.Health <= 0)
+                    Console.Write($"");
+                else
+                    Console.Write($"{defender} ({defender.AttackDice}) counter attacked and made {Combat.Result} dmg.");
             }
         }
 

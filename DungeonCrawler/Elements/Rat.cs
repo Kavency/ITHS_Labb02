@@ -37,11 +37,11 @@ namespace DungeonCrawler.Elements
             else
             {
                 CollisionController.ClearOldPosition(this);
-                if (direction == 0)
+                if (direction == (int)Directions.North)
                     this.YPosition--;
-                else if (direction == 1)
+                else if (direction == (int)Directions.South)
                     this.YPosition++;
-                else if (direction == 2)
+                else if (direction == (int)Directions.West)
                     this.XPosition--;
                 else
                     this.XPosition++;

@@ -22,7 +22,7 @@ namespace DungeonCrawler.GameLogic
 
             if (defender.Health <= 0)
             {
-                WasKilled(defender);
+                defender.Died(); ;
             }
             else
             {
