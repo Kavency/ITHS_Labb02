@@ -21,13 +21,26 @@ namespace DungeonCrawler.Elements
         }
         public override void Update()
         {
+            Move();
             Draw();
         }
 
         public override void Move()
         {
-            Random rnd = new();
-            int direction = rnd.Next(0, 4);
+            int direction = 0;
+            
+            int distanceToPlayer = DistanceController.DistanceToPlayer(Game.player, this);
+            if (distanceToPlayer > 2)
+                return;
+
+            if (Game.player.XPosition < this.XPosition)
+                direction = SetDirectionAwayFromPlayer((int)Directions.West);
+            else if (Game.player.XPosition > this.XPosition)
+                direction = SetDirectionAwayFromPlayer((int)Directions.East);
+            else if (Game.player.YPosition < this.YPosition)
+                direction = SetDirectionAwayFromPlayer((int)Directions.North);
+            else if (Game.player.YPosition > this.YPosition)
+                direction = SetDirectionAwayFromPlayer((int)Directions.South);
 
             if (CollisionController.CheckForCollision((Directions)direction, this))
             {
@@ -36,14 +49,26 @@ namespace DungeonCrawler.Elements
             else
             {
                 CollisionController.ClearOldPosition(this);
-                if (direction == 0)
+                if (direction == (int)Directions.North)
                     this.YPosition--;
-                else if (direction == 1)
-                    this.YPosition++;
-                else if (direction == 2)
-                    this.XPosition--;
-                else
+                else if (direction == (int)Directions.East)
                     this.XPosition++;
+                else if (direction == (int)Directions.South)
+                    this.YPosition++;
+                else
+                    this.XPosition--;
+            }
+
+            int SetDirectionAwayFromPlayer(int directionOfThePlayer)
+            {
+                Random rnd = new();
+                int moveInDirection = 0;
+                do
+                {
+                    moveInDirection = rnd.Next(0, 4);
+                } while (moveInDirection == directionOfThePlayer);
+
+                return moveInDirection;
             }
         }
 
