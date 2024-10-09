@@ -1,4 +1,5 @@
 ﻿using DungeonCrawler.GameLogic;
+using System.Media;
 
 namespace DungeonCrawler
 {
@@ -8,6 +9,8 @@ namespace DungeonCrawler
         {
             Console.Title = "Dungeon Crawler Deluxe Edition";
             Console.CursorVisible = false;
+            SoundPlayer musicPlayer = new(@".\Assets\Music\BGMusic.wav");
+            musicPlayer.PlayLooping();
 
             while(true)
             {
