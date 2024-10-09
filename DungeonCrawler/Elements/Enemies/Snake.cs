@@ -1,6 +1,6 @@
 ﻿using DungeonCrawler.GameLogic;
 
-namespace DungeonCrawler.Elements
+namespace DungeonCrawler.Elements.Enemies
 {
     internal class Snake : Enemy
     {
@@ -36,18 +36,18 @@ namespace DungeonCrawler.Elements
         public override void Move()
         {
             int direction = 0;
-            
+
             int distanceToPlayer = DistanceController.DistanceToPlayer(Game.player, this);
             if (distanceToPlayer > 2)
                 return;
 
-            if (Game.player.XPosition < this.XPosition)
+            if (Game.player.XPosition < XPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.West);
-            else if (Game.player.XPosition > this.XPosition)
+            else if (Game.player.XPosition > XPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.East);
-            else if (Game.player.YPosition < this.YPosition)
+            else if (Game.player.YPosition < YPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.North);
-            else if (Game.player.YPosition > this.YPosition)
+            else if (Game.player.YPosition > YPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.South);
 
             if (CollisionController.CheckForCollision((Directions)direction, this))
@@ -58,13 +58,13 @@ namespace DungeonCrawler.Elements
             {
                 CollisionController.ClearOldPosition(this);
                 if (direction == (int)Directions.North)
-                    this.YPosition--;
+                    YPosition--;
                 else if (direction == (int)Directions.East)
-                    this.XPosition++;
+                    XPosition++;
                 else if (direction == (int)Directions.South)
-                    this.YPosition++;
+                    YPosition++;
                 else
-                    this.XPosition--;
+                    XPosition--;
             }
 
             int SetDirectionAwayFromPlayer(int directionOfThePlayer)
@@ -86,7 +86,7 @@ namespace DungeonCrawler.Elements
         /// </summary>
         public override string ToString()
         {
-            return $"{this.Name} 'The Snake'";
+            return $"{Name} 'The Snake'";
         }
     }
 }

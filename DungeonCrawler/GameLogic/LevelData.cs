@@ -1,4 +1,5 @@
 ﻿using DungeonCrawler.Elements;
+using DungeonCrawler.Elements.Enemies;
 
 namespace DungeonCrawler.GameLogic
 {

@@ -1,6 +1,6 @@
 ﻿using DungeonCrawler.GameLogic;
 
-namespace DungeonCrawler.Elements
+namespace DungeonCrawler.Elements.Enemies
 {
     abstract internal class Enemy : LevelElement, ICharacter
     {
@@ -16,15 +16,15 @@ namespace DungeonCrawler.Elements
         /// </summary>
         public void Died()
         {
-            this.IsAlive = false;
-            this.IsVisible = false;
-            this.Draw();
+            IsAlive = false;
+            IsVisible = false;
+            Draw();
             Game.deadElement = this;
         }
         abstract public void Update();
         abstract public void Move();
     }
-    
 
-    
+
+
 }

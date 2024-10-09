@@ -1,6 +1,6 @@
 ﻿using DungeonCrawler.GameLogic;
 
-namespace DungeonCrawler.Elements
+namespace DungeonCrawler.Elements.Enemies
 {
     internal class Rat : Enemy
     {
@@ -46,13 +46,13 @@ namespace DungeonCrawler.Elements
             {
                 CollisionController.ClearOldPosition(this);
                 if (direction == (int)Directions.North)
-                    this.YPosition--;
+                    YPosition--;
                 else if (direction == (int)Directions.South)
-                    this.YPosition++;
+                    YPosition++;
                 else if (direction == (int)Directions.West)
-                    this.XPosition--;
+                    XPosition--;
                 else
-                    this.XPosition++;
+                    XPosition++;
             }
         }
 
@@ -62,7 +62,7 @@ namespace DungeonCrawler.Elements
         /// </summary>
         public override string ToString()
         {
-            return $"{this.Name} 'the Rat'";
+            return $"{Name} 'the Rat'";
         }
     }
 }
