@@ -4,15 +4,21 @@ using System.Threading.Tasks;
 
 namespace DungeonCrawler.GameLogic
 {
-    static class Timer
+    class TimeOut
     {
         /// <summary>
         /// Starts a timer on default 5 seconds.
         /// </summary>
-        public static async Task CountDown(int seconds = 5)
+        public async Task TextCountDown(int seconds = 5)
         {
             await Task.Delay(seconds * 1000);
             TextHandler.ClearEventText();
+        }
+
+        public async Task ViewRangeCountDown()
+        {
+            await Task.Delay(10000);
+            DistanceController.VievRange = 2;
         }
     }
 }
