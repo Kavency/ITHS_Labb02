@@ -1,4 +1,5 @@
 ﻿using DungeonCrawler.Elements.Enemies;
+using DungeonCrawler.Elements.Items;
 using DungeonCrawler.GameLogic;
 
 namespace DungeonCrawler.Elements
@@ -8,6 +9,7 @@ namespace DungeonCrawler.Elements
         public string Name { get; set; }
         public int Health { get; set; }
         public bool IsAlive { get; set; }
+        public bool HasKey { get; set; }
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
@@ -26,6 +28,7 @@ namespace DungeonCrawler.Elements
             MapSymbol = '@';
             IsVisible = true;
             IsAlive = true;
+            HasKey = false;
             AttackDice = attackDice;
             DefenceDice = defenceDice;
         }
@@ -71,7 +74,12 @@ namespace DungeonCrawler.Elements
 
             if (CollisionController.CheckForCollision(directionMoved, this))
             {
-                Combat.Attack(this, CollisionController.collisionObject as Enemy);
+                if (CollisionController.collisionObject is Enemy)
+                    CombatHandler.Attack(this, CollisionController.collisionObject as Enemy);
+                else if (CollisionController.collisionObject is ICollectable)
+                    PickUpHandler.PickUpItem(this, CollisionController.collisionObject);
+                else if (CollisionController.collisionObject is Door door)
+                    door.OpenDoor(this);
             }
             else
             {

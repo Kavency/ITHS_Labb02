@@ -2,7 +2,7 @@
 
 namespace DungeonCrawler.GameLogic
 {
-    internal static class Combat
+    internal static class CombatHandler
     {
         private static int _result = 0;
         public static int Result { get { return _result; } }
@@ -62,7 +62,8 @@ namespace DungeonCrawler.GameLogic
             static void StartOutputProcess(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
             {
                 TextHandler.AttackText(attacker, defender, isCounterAttacking);
-                Timer.CountDown();
+                TimeOut timer = new();
+                timer.TextCountDown();
                 Thread.Sleep(250);
             }
         }

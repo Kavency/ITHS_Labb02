@@ -87,15 +87,20 @@ namespace DungeonCrawler.GameLogic
                     else
                         Console.ForegroundColor = wall.InVisibleColour;
 
-                    DistanceController.ViewRange(player, wall);
+                    DistanceController.SetViewRange(player, wall);
                     Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                     wall.Draw();
                 }
-                if(item is Enemy enemy)
+                else
                 {
-                    DistanceController.ViewRange(player, enemy);
-                    enemy.Draw();
+                    DistanceController.SetViewRange(player, item);
+                    item.Draw();
                 }
+                //if(item is Enemy enemy)
+                //{
+                //    DistanceController.ViewRange(player, enemy);
+                //    enemy.Draw();
+                //}
             }
         }
 

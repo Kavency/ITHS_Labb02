@@ -131,7 +131,7 @@ namespace DungeonCrawler.GameLogic
                 if (defender.Health <= 0)
                     Console.Write($"{defender} died in the most horrible of ways.");
                 else
-                    Console.Write($"{attacker} ({attacker.AttackDice}) attacked {defender} ({defender.DefenceDice}) and made {Combat.Result} dmg.");
+                    Console.Write($"{attacker} ({attacker.AttackDice}) attacked {defender} ({defender.DefenceDice}) and made {CombatHandler.Result} dmg.");
             }
             else
             {
@@ -141,7 +141,7 @@ namespace DungeonCrawler.GameLogic
                 if (attacker.Health <= 0)
                     Console.Write($"");
                 else
-                    Console.Write($"{defender} ({defender.AttackDice}) counter attacked and made {Combat.Result} dmg.");
+                    Console.Write($"{defender} ({defender.AttackDice}) counter attacked and made {CombatHandler.Result} dmg.");
             }
         }
 

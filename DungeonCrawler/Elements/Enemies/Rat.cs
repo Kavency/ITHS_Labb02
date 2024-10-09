@@ -40,7 +40,7 @@ namespace DungeonCrawler.Elements.Enemies
 
             if (CollisionController.CheckForCollision((Directions)direction, this))
             {
-                Combat.Attack(this, CollisionController.collisionObject as Player);
+                CombatHandler.Attack(this, CollisionController.collisionObject as Player);
             }
             else
             {

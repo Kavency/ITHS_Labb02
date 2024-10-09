@@ -6,16 +6,18 @@ namespace DungeonCrawler.GameLogic
 {
     internal static class DistanceController
     {
+        public static int VievRange { get; set; } = 2;
+
         /// <summary>
         /// Controls the view range.
         /// </summary>
-        public static void ViewRange(ICharacter player, LevelElement element)
+        public static void SetViewRange(ICharacter player, LevelElement element)
         {
             
             int distance = 0;
             distance = DistanceToPlayer(player, element);
 
-            if (distance < 5)
+            if (distance < VievRange)
             {
                 element.IsVisible = true;
 

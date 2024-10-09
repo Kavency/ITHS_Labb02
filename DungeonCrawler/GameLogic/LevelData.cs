@@ -1,5 +1,6 @@
 ﻿using DungeonCrawler.Elements;
 using DungeonCrawler.Elements.Enemies;
+using DungeonCrawler.Elements.Items;
 
 namespace DungeonCrawler.GameLogic
 {
@@ -17,11 +18,11 @@ namespace DungeonCrawler.GameLogic
         {
             using (StreamReader reader = new StreamReader(fileName))
             {
-                int characterAsInt;
+                int character;
 
-                while ((characterAsInt = reader.Read()) != -1)
+                while ((character = reader.Read()) != -1)
                 {
-                    AddMapElementToListOfElements(characterAsInt);
+                    AddMapElementToListOfElements((char)character);
                 }
             }
         }
@@ -31,29 +32,29 @@ namespace DungeonCrawler.GameLogic
         /// Adds an instance of found elements to the list of elements.
         /// </summary>
         /// <param name="characterAsInt">Takes an integer representing a char.</param>
-        static private void AddMapElementToListOfElements(int characterAsInt)
+        static private void AddMapElementToListOfElements(char characterAsInt)
         {
             switch (characterAsInt)
             {
-                case 35:
+                case '#':
                     Wall wall = new();
                     _elements.Add(wall);
                     SetElementPosition(wall);
                     wall.Draw();
                     break;
-                case 114:
+                case 'r':
                     Rat rat = new();
                     _elements.Add(rat);
                     SetElementPosition(rat);
                     rat.Draw();
                     break;
-                case 115:
+                case 's':
                     Snake snake = new();
                     _elements.Add(snake);
                     SetElementPosition(snake);
                     snake.Draw();
                     break;
-                case 64:
+                case '@':
                     _elements.Add(Game.player);
                     SetElementPosition(Game.player);
                     Game.player.Draw();
