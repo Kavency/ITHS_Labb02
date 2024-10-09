@@ -16,6 +16,9 @@ namespace DungeonCrawler.Elements.Items
             player.HasKey = true;
             CollisionController.ClearOldPosition(this);
             LevelData.MapElements.Remove(this);
+
+            TextHandler.EventText("I found a key, to what I wonder.");
+
         }
     }
 }

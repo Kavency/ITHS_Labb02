@@ -1,4 +1,5 @@
 ﻿using DungeonCrawler.Elements;
+using DungeonCrawler.Elements.Enemies;
 
 namespace DungeonCrawler.GameLogic
 {
@@ -26,7 +27,7 @@ namespace DungeonCrawler.GameLogic
 
             if (defender.Health <= 0)
             {
-                defender.Died(); ;
+                defender.Died();
             }
             else
             {
@@ -46,6 +47,13 @@ namespace DungeonCrawler.GameLogic
                 }
             }
 
+            if(defender is Enemy enemy)
+            {
+                enemy.AttackCountDownActive = true;
+                TimeOut coolDown = new();
+                coolDown.AttackTimeOut(enemy);
+            }
+
 
             /// <summary>
             /// Calculates the combat result by throwing dices.
@@ -62,8 +70,6 @@ namespace DungeonCrawler.GameLogic
             static void StartOutputProcess(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
             {
                 TextHandler.AttackText(attacker, defender, isCounterAttacking);
-                TimeOut timer = new();
-                timer.TextCountDown();
                 Thread.Sleep(250);
             }
         }

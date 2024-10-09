@@ -2,13 +2,12 @@
 {
     internal class Wall : LevelElement
     {
-        public bool HasBeenDetected { get; set; }
+        public bool HasBeenDetected { get; set; } = false;
         public ConsoleColor HasBeenDetectedColour { get; } = ConsoleColor.DarkGray;
         public Wall()
         {
             MapSymbol = '#';
             VisibleColour = ConsoleColor.Gray;
-            HasBeenDetected = false;
         }
 
 

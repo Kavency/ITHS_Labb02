@@ -112,36 +112,46 @@ namespace DungeonCrawler.GameLogic
             Console.SetCursorPosition(5, 2);
             Console.Write(ClearRow);
             Console.SetCursorPosition(5, 2);
-            Console.Write($"Name: {player.Name} - {player.Health} Health");
+            Console.Write($"Name: {player.Name} - = * = - {player.Health} Health");
         }
 
 
         /// <summary>
-        /// Prints out the action to the event window.
+        /// Prints a string to the header.
+        /// </summary>
+        public static void EventText(string prompt)
+        {
+            SetColourAndPositionOfCursor();
+            Console.WriteLine(prompt);
+            StartTextTimeOut();
+        }
+
+
+        /// <summary>
+        /// Prints out the action to the header.
         /// </summary>
         public static void AttackText(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
 
             if (!isCounterAttacking)
             {
-                Console.SetCursorPosition(4, 4);
-                Console.Write(ClearRow);
-                Console.SetCursorPosition(4, 4);
+                SetColourAndPositionOfCursor();
+                
                 if (defender.Health <= 0)
-                    Console.Write($"{defender} died in the most horrible of ways.");
+                    Console.WriteLine($"{defender} died in the most horrible of ways.");
                 else
                     Console.Write($"{attacker} ({attacker.AttackDice}) attacked {defender} ({defender.DefenceDice}) and made {CombatHandler.Result} dmg.");
+                StartTextTimeOut();
             }
             else
             {
-                Console.SetCursorPosition(4, 6);
-                Console.Write(ClearRow);
-                Console.SetCursorPosition(4, 6);
+                SetColourAndPositionOfCursor(2);
+
                 if (attacker.Health <= 0)
                     Console.Write($"");
                 else
                     Console.Write($"{defender} ({defender.AttackDice}) counter attacked and made {CombatHandler.Result} dmg.");
+                StartTextTimeOut();
             }
         }
 
@@ -158,7 +168,31 @@ namespace DungeonCrawler.GameLogic
 
 
         /// <summary>
-        /// Clears the text in the event window.
+        /// Set colour and position for printing in the header.
+        /// </summary>
+        /// <param name="rowOffset">Should be 0(default) or 2</param>
+        public static void SetColourAndPositionOfCursor(int rowOffset = 0)
+        {
+            Console.SetCursorPosition(4, 4 + rowOffset);
+            Console.Write(ClearRow);
+            Console.SetCursorPosition(4, 4 + rowOffset);
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+        }
+
+
+        /// <summary>
+        /// Starts a timer for displaying text in the header.
+        /// </summary>
+        public static void StartTextTimeOut(int seconds = 7)
+        {
+            TimeOut timeout = new();
+            timeout.TextCountDown(seconds);
+        }
+
+
+        /// <summary>
+        /// Clears the text in the header.
         /// </summary>
         public static void ClearEventText()
         {

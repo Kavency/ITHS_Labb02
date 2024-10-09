@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DungeonCrawler.Elements.Enemies;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,7 +8,7 @@ namespace DungeonCrawler.GameLogic
     class TimeOut
     {
         /// <summary>
-        /// Starts a timer on default 5 seconds.
+        /// Countdown to clear event text.
         /// </summary>
         public async Task TextCountDown(int seconds = 5)
         {
@@ -15,10 +16,24 @@ namespace DungeonCrawler.GameLogic
             TextHandler.ClearEventText();
         }
 
+
+        /// <summary>
+        /// Controls the torch burnout time.
+        /// </summary>
         public async Task ViewRangeCountDown()
         {
-            await Task.Delay(10000);
+            await Task.Delay(15000);
             DistanceController.VievRange = 2;
+        }
+
+
+        /// <summary>
+        /// Stops the enemy from immediately attacking the player after it has defended. 
+        /// </summary>
+        public async Task AttackTimeOut(Enemy enemy)
+        {
+            await Task.Delay(3000);
+            enemy.AttackCountDownActive = false;
         }
     }
 }

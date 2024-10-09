@@ -17,6 +17,8 @@ namespace DungeonCrawler.Elements.Items
             TimeOut timer = new();
             timer.ViewRangeCountDown();
 
+            TextHandler.EventText("I picked up a torch, let there be light, at least for a while.");
+
             CollisionController.ClearOldPosition(this);
             LevelData.MapElements.Remove(this);
         }

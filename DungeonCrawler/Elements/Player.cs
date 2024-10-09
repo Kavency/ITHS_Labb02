@@ -8,8 +8,8 @@ namespace DungeonCrawler.Elements
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        public bool IsAlive { get; set; }
-        public bool HasKey { get; set; }
+        public bool IsAlive { get; set; } = true;
+        public bool HasKey { get; set; } = false;
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
@@ -27,8 +27,6 @@ namespace DungeonCrawler.Elements
             VisibleColour = ConsoleColor.Yellow;
             MapSymbol = '@';
             IsVisible = true;
-            IsAlive = true;
-            HasKey = false;
             AttackDice = attackDice;
             DefenceDice = defenceDice;
         }

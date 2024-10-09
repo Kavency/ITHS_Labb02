@@ -16,7 +16,7 @@ namespace DungeonCrawler.GameLogic
         public void SetupGame()
         {
             //string filePath = @"Levels\TestLevel.txt";
-            string filePath = @"Levels\Level1.txt";
+            string filePath = @".\Assets\Levels\Level1.txt";
             
             Console.Clear();
             TextHandler.NameBoxText();
@@ -132,14 +132,18 @@ namespace DungeonCrawler.GameLogic
         {
             foreach (var item in LevelData.MapElements)
             {
-                if (item is Rat rat)
+                if (item is Enemy enemy)
                 {
-                    rat.Update();
+                    enemy.Update();
                 }
-                else if (item is Snake snake)
-                {
-                    snake.Update();
-                }
+                //if (item is Rat rat)
+                //{
+                //    rat.Update();
+                //}
+                //else if (item is Snake snake)
+                //{
+                //    snake.Update();
+                //}
 
                 if (!player.IsAlive)
                 {
