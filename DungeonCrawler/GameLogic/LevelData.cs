@@ -58,6 +58,30 @@ namespace DungeonCrawler.GameLogic
                     SetElementPosition(Game.player);
                     Game.player.Draw();
                     break;
+                case 'k':
+                    Key key = new();
+                    _elements.Add(key);
+                    SetElementPosition(key);
+                    key.Draw();
+                    break;
+                case 't':
+                    Torch torch = new();
+                    _elements.Add(torch);
+                    SetElementPosition(torch);
+                    torch.Draw();
+                    break;
+                case 'd':
+                    Door door = new();
+                    _elements.Add(door);
+                    SetElementPosition(door);
+                    door.Draw();
+                    break;
+                case '+':
+                    HealthPotion healthPack = new();
+                    _elements.Add(healthPack);
+                    SetElementPosition(healthPack);
+                    healthPack.Draw();
+                    break;
                 default:
                     Console.Write((char)characterAsInt);
                     break;
