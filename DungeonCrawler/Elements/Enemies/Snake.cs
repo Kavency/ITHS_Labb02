@@ -12,7 +12,6 @@ namespace DungeonCrawler.Elements.Enemies
 
             Name = NameProvider.GetRandomName();
             Health = 25;
-            IsAlive = true;
             VisibleColour = ConsoleColor.Red;
             MapSymbol = 's';
             AttackDice = attackDice;

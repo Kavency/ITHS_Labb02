@@ -6,7 +6,8 @@ namespace DungeonCrawler.Elements.Enemies
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        public bool IsAlive { get; set; }
+        public bool IsAlive { get; set; } = true;
+        public bool AttackCountDownActive { get; set; } = false;
         public Dice AttackDice { get; set; }
         public Dice DefenceDice { get; set; }
 
