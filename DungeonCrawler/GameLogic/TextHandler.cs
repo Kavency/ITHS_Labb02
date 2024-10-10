@@ -44,10 +44,10 @@ namespace DungeonCrawler.GameLogic
 
         static private string _nameBox =
             "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\r\n" +
-            "█                                                █\r\n" +
-            "█ Gallant Knight, what be thy name?              █\r\n" +
-            "█ ->                                             █\r\n" +
-            "█                                                █\r\n" +
+            "██░                                            ░██\r\n" +
+            "█       Gallant Knight, what be thy name?        █\r\n" +
+            "█  ->                                            █\r\n" +
+            "██░                                            ░██\r\n" +
             "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
 
         static private string _deathText =
@@ -63,7 +63,6 @@ namespace DungeonCrawler.GameLogic
             "\r\n                        > PRESS ANY KEY <";
 
         static private string _clearRow = "                                                                          ";
-
         public static string Title { get { return _titleScreen; } }
         public static string Header { get { return _header; } }
         public static string ClearRow { get { return _clearRow; } }
