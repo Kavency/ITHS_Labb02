@@ -39,7 +39,6 @@ namespace DungeonCrawler.GameLogic
             "▓                                                                              ▓\r\n" +
             "▓                                                                              ▓\r\n" +
             "▓                                                                              ▓\r\n" +
-            "▓                                                                              ▓\r\n" +
             "▓▓░░                                                                        ░░▓▓\r\n" +
             "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\r\n";
 
@@ -109,10 +108,10 @@ namespace DungeonCrawler.GameLogic
         public static void PlayerStatsText(Player player)
         {
             Console.ForegroundColor = player.VisibleColour;
-            Console.SetCursorPosition(5, 2);
+            Console.SetCursorPosition(5, 1);
             Console.Write(ClearRow);
-            Console.SetCursorPosition(5, 2);
-            Console.Write($"Name: {player.Name} - = * = - {player.Health} Health");
+            Console.SetCursorPosition(5, 1);
+            Console.Write($"Name: {player.Name}\t\tHealth: {player.Health}");
         }
 
 
@@ -173,9 +172,9 @@ namespace DungeonCrawler.GameLogic
         /// <param name="rowOffset">Should be 0(default) or 2</param>
         public static void SetColourAndPositionOfCursor(int rowOffset = 0)
         {
-            Console.SetCursorPosition(4, 4 + rowOffset);
+            Console.SetCursorPosition(4, 3 + rowOffset);
             Console.Write(ClearRow);
-            Console.SetCursorPosition(4, 4 + rowOffset);
+            Console.SetCursorPosition(4, 3 + rowOffset);
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         }

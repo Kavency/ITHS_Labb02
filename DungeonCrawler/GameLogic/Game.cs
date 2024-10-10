@@ -16,7 +16,7 @@ namespace DungeonCrawler.GameLogic
         public void SetupGame()
         {
             //string filePath = @"Levels\TestLevel.txt";
-            string filePath = @".\Assets\Levels\Level1.txt";
+            string filePath = @".\Assets\Levels\Level_1.txt";
             
             Console.Clear();
             TextHandler.NameBoxText();
@@ -38,7 +38,7 @@ namespace DungeonCrawler.GameLogic
             player.Name = playerName;
             gameState = GameState.PlayerTurn;
             
-            DrawGame();
+            //DrawGame();
             player.Draw();
         }
 
@@ -51,6 +51,8 @@ namespace DungeonCrawler.GameLogic
         {
             while (gameState != GameState.GameOver)
             {
+                DrawGame();
+
                 if (gameState == GameState.PlayerTurn)
                 {
                     PlayerTurn();
@@ -96,11 +98,6 @@ namespace DungeonCrawler.GameLogic
                     DistanceController.SetViewRange(player, item);
                     item.Draw();
                 }
-                //if(item is Enemy enemy)
-                //{
-                //    DistanceController.ViewRange(player, enemy);
-                //    enemy.Draw();
-                //}
             }
         }
 
@@ -121,7 +118,7 @@ namespace DungeonCrawler.GameLogic
             else
                 gameState = GameState.EnemyTurn;
 
-            DrawGame();
+            //DrawGame();
         }
 
 
@@ -136,14 +133,6 @@ namespace DungeonCrawler.GameLogic
                 {
                     enemy.Update();
                 }
-                //if (item is Rat rat)
-                //{
-                //    rat.Update();
-                //}
-                //else if (item is Snake snake)
-                //{
-                //    snake.Update();
-                //}
 
                 if (!player.IsAlive)
                 {
@@ -157,7 +146,7 @@ namespace DungeonCrawler.GameLogic
             if (deadElement != null)
                 LevelData.MapElements.Remove(deadElement);
 
-            DrawGame();
+            //DrawGame();
         }
 
 

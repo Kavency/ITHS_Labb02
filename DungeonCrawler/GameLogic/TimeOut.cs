@@ -1,7 +1,4 @@
 ﻿using DungeonCrawler.Elements.Enemies;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace DungeonCrawler.GameLogic
 {
@@ -22,7 +19,7 @@ namespace DungeonCrawler.GameLogic
         /// </summary>
         public async Task ViewRangeCountDown()
         {
-            await Task.Delay(15000);
+            await Task.Delay(20000);
             DistanceController.VievRange = 2;
         }
 

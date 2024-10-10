@@ -12,16 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\Music\BGMusic.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Assets\Levels\Level1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\Levels\Level2.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Levels\TestLevel.txt">
+    <None Update="Assets\Music\BGMusic.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
