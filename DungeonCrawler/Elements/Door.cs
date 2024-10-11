@@ -21,9 +21,7 @@ namespace DungeonCrawler.Elements
                 TextHandler.EventText("The key you found unlocks the door. What lays beyond?");
             }
             else
-            {
                 TextHandler.EventText("Locked, you need a key to open this door.");
-            }
         }
     }
 }

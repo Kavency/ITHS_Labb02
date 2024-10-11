@@ -5,6 +5,9 @@ namespace DungeonCrawler.GameLogic
 {
     internal static class PickUpHandler
     {
+        /// <summary>
+        /// Collect items from the level.
+        /// </summary>
         public static void PickUpItem(Player player, LevelElement item)
         {
             if (item is Key key)

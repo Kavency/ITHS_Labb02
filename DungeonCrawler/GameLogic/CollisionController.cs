@@ -12,36 +12,38 @@ namespace DungeonCrawler.GameLogic
         /// </summary>
         public static bool CheckForCollision(Enum directionMoved, LevelElement elementThatMoved)
         {
+            LevelElement? item;
+
             if (directionMoved.Equals(Directions.North))
             {
-                var item = LevelData.MapElements.Find(item => item.XPosition == elementThatMoved.XPosition 
+                item = LevelData.MapElements.Find(item => item.XPosition == elementThatMoved.XPosition 
                     && item.YPosition == elementThatMoved.YPosition - 1);
-                return HasCollided(elementThatMoved, item);
+                return HasCollided();
             }
             else if (directionMoved.Equals(Directions.South))
             {
-                var item = LevelData.MapElements.Find(item => item.XPosition == elementThatMoved.XPosition 
+                item = LevelData.MapElements.Find(item => item.XPosition == elementThatMoved.XPosition 
                     && item.YPosition == elementThatMoved.YPosition + 1);
-                return HasCollided(elementThatMoved, item);
+                return HasCollided();
             }
             else if (directionMoved.Equals(Directions.West))
             {
-                var item = LevelData.MapElements.Find(item => item.YPosition == elementThatMoved.YPosition 
+                item = LevelData.MapElements.Find(item => item.YPosition == elementThatMoved.YPosition 
                     && item.XPosition == elementThatMoved.XPosition - 1);
-                return HasCollided(elementThatMoved, item);
+                return HasCollided();
             }
             else
             {
-                var item = LevelData.MapElements.Find(item => item.YPosition == elementThatMoved.YPosition
+                item = LevelData.MapElements.Find(item => item.YPosition == elementThatMoved.YPosition
                     && item.XPosition == elementThatMoved.XPosition + 1);
-                return HasCollided(elementThatMoved, item);
+                return HasCollided();
             }
 
-
+            
             /// <summary>
             /// Checks if a collision occurred.
             /// </summary>
-            static bool HasCollided(LevelElement elementThatMoved, LevelElement? item)
+            bool HasCollided()
             {
                 if (item != null)
                 {

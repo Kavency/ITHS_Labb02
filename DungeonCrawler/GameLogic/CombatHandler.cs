@@ -23,7 +23,7 @@ namespace DungeonCrawler.GameLogic
 
             defender.Health -= _result;
 
-            StartOutputProcess(attacker, defender, false);
+            ResultOutput(attacker, defender, false);
 
             if (defender.Health <= 0)
             {
@@ -31,14 +31,14 @@ namespace DungeonCrawler.GameLogic
             }
             else
             {
-                _result = PerformAttack(defender, attacker);
+                _result = PerformAttack(attacker: defender, defender: attacker);
                     
                 if (_result < 0)
                     _result = 0;
                     
                 attacker.Health -= _result;
 
-                StartOutputProcess(attacker, defender, true);
+                ResultOutput(attacker, defender, true);
 
                 if (attacker.Health <= 0)
                 {
@@ -58,7 +58,7 @@ namespace DungeonCrawler.GameLogic
             /// <summary>
             /// Calculates the combat result by throwing dices.
             /// </summary>
-            static int PerformAttack(ICharacter attacker, ICharacter defender)
+            int PerformAttack(ICharacter attacker, ICharacter defender)
             {
                 return attacker.AttackDice.ThrowDie() - defender.DefenceDice.ThrowDie();
             }
@@ -67,7 +67,7 @@ namespace DungeonCrawler.GameLogic
             /// <summary>
             /// Sends the characters for printout and starts timer.
             /// </summary>
-            static void StartOutputProcess(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
+            void ResultOutput(ICharacter attacker, ICharacter defender, bool isCounterAttacking)
             {
                 TextHandler.AttackText(attacker, defender, isCounterAttacking);
                 Thread.Sleep(250);

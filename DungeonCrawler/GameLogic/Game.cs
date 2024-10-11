@@ -16,32 +16,27 @@ namespace DungeonCrawler.GameLogic
         public void SetupGame()
         {
             string filePath = @".\Assets\Levels\Level1.txt";
-            
             Console.Clear();
             TextHandler.NameBoxText();
             Console.CursorVisible = true;
-
+            
             player = new();
             string playerName = Console.ReadLine().Trim();
+            
             if (playerName == "")
             {
                 playerName = NameProvider.GetRandomName();
             }
             
             Console.CursorVisible = false;
-
             TextHandler.IntroText();
             Console.ReadKey();
-
-
             Console.Clear();
             TextHandler.HeaderText();
-
             LevelData.Load(filePath);
+            
             player.Name = playerName;
             gameState = GameStates.PlayerTurn;
-            
-            //DrawGame();
             player.Draw();
         }
 
@@ -56,7 +51,6 @@ namespace DungeonCrawler.GameLogic
             {
                 DrawGame();
 
-
                 if (gameState == GameStates.PlayerTurn)
                 {
                     PlayerTurn();
@@ -67,10 +61,6 @@ namespace DungeonCrawler.GameLogic
                 {
                     EnemyTurn();
                 }
-
-                //DrawGame();
-
-                //Thread.Sleep(50);
             }
         }
 
@@ -93,13 +83,13 @@ namespace DungeonCrawler.GameLogic
                     else
                         Console.ForegroundColor = wall.InVisibleColour;
 
-                    DistanceController.SetViewRange(player, wall);
+                    DistanceController.ViewRange(player, wall);
                     Console.SetCursorPosition(wall.XPosition, wall.YPosition);
                     wall.Draw();
                 }
                 else
                 {
-                    DistanceController.SetViewRange(player, item);
+                    DistanceController.ViewRange(player, item);
                     item.Draw();
                 }
             }
@@ -121,8 +111,6 @@ namespace DungeonCrawler.GameLogic
             }
             else
                 gameState = GameStates.EnemyTurn;
-
-            //DrawGame();
         }
 
 
@@ -134,9 +122,7 @@ namespace DungeonCrawler.GameLogic
             foreach (var item in LevelData.MapElements)
             {
                 if (item is Enemy enemy)
-                {
                     enemy.Update();
-                }
 
                 if (!player.IsAlive)
                 {
@@ -149,8 +135,6 @@ namespace DungeonCrawler.GameLogic
 
             if (deadElement != null)
                 LevelData.MapElements.Remove(deadElement);
-
-            //DrawGame();
         }
 
 

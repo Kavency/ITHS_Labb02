@@ -81,7 +81,7 @@ namespace DungeonCrawler.GameLogic
             " \\_ |   You wake up in a damp,      |\r\n" +
             "    |   dark cell. Looking around   |\r\n" +
             "    |   you can see a dim light     |\r\n" +
-            "    |   coming from the celldoor.   |\r\n" +
+            "    |   coming from the cell door.  |\r\n" +
             "    |   It has been left slightly   |\r\n" +
             "    |   ajar. This is your chance   |\r\n" +
             "    |   to escape. Take it!         |\r\n" +
@@ -92,7 +92,7 @@ namespace DungeonCrawler.GameLogic
             "    |   t - Torch, Helps you        |\r\n" +
             "    |       see further but it      |\r\n" +
             "    |       burns out over time.    |\r\n" +
-            "    |   + - Healt potion.           |\r\n" +
+            "    |   + - Health potion.          |\r\n" +
             "    |   k - Key, unlocks doors.     |\r\n" +
             "    |   d - Door, needs key.        |\r\n" +
             "    |   e - The exit, your goal.    |\r\n" +
@@ -219,6 +219,7 @@ namespace DungeonCrawler.GameLogic
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(_winText);
+            StartTextTimeOut(30);
         }
 
 

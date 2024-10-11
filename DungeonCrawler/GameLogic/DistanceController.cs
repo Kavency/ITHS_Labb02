@@ -1,6 +1,4 @@
 ﻿using DungeonCrawler.Elements;
-using System.Numerics;
-using System.Xml.Linq;
 
 namespace DungeonCrawler.GameLogic
 {
@@ -11,7 +9,7 @@ namespace DungeonCrawler.GameLogic
         /// <summary>
         /// Controls the view range.
         /// </summary>
-        public static void SetViewRange(ICharacter player, LevelElement element)
+        public static void ViewRange(ICharacter player, LevelElement element)
         {
             
             int distance = 0;

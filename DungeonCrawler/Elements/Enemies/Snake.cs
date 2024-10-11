@@ -39,22 +39,21 @@ namespace DungeonCrawler.Elements.Enemies
             if (distanceToPlayer > 2)
                 return;
 
-            if (Game.player.XPosition < XPosition)
+            if (Game.player.XPosition < this.XPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.West);
-            else if (Game.player.XPosition > XPosition)
+            else if (Game.player.XPosition > this.XPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.East);
-            else if (Game.player.YPosition < YPosition)
+            else if (Game.player.YPosition < this.YPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.North);
-            else if (Game.player.YPosition > YPosition)
+            else if (Game.player.YPosition > this.YPosition)
                 direction = SetDirectionAwayFromPlayer((int)Directions.South);
 
             if (CollisionController.CheckForCollision((Directions)direction, this))
-            {
                 CombatHandler.Attack(this, CollisionController.collisionObject as Player);
-            }
             else
             {
                 CollisionController.ClearOldPosition(this);
+                
                 if (direction == (int)Directions.North)
                     YPosition--;
                 else if (direction == (int)Directions.East)

@@ -17,6 +17,7 @@
         public override void Draw()
         {
             Console.SetCursorPosition(XPosition, YPosition);
+            
             if (IsVisible)
             {
                 Console.ForegroundColor = VisibleColour;
