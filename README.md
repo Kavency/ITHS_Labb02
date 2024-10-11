@@ -1,6 +1,7 @@
 # ITHS_Labb02
 ## Dungeon Crawler Deluxe
-Mission.... Create a simple Dungeon Crawler console game. Enjoy!
+The mission, if I choose to accept it... Create a simple Dungeon Crawler console game.
+I had no choice, it had to be done. Enjoy!
 
 
 ### För godkänt:
