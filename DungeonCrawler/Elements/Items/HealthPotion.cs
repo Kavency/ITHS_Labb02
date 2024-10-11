@@ -18,7 +18,7 @@ namespace DungeonCrawler.Elements.Items
             if (player.Health > 100)
                 player.Health = 100;
 
-            TextHandler.EventText("I drink the vile potion and I feel stronger than ever before!");
+            TextHandler.EventText("You drink the vile potion and you feel stronger than ever before!");
 
             CollisionController.ClearOldPosition(this);
             LevelData.MapElements.Remove(this);

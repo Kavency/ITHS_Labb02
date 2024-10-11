@@ -13,11 +13,11 @@ namespace DungeonCrawler.Elements.Items
 
         public void PickUp(Player player)
         {
-            DistanceController.VievRange = 5;
+            DistanceController.VievRange = 7;
             TimeOut timer = new();
             timer.ViewRangeCountDown();
 
-            TextHandler.EventText("I picked up a torch, let there be light, at least for a while.");
+            TextHandler.EventText("You picked up a torch, let there be light, at least for a while.");
 
             CollisionController.ClearOldPosition(this);
             LevelData.MapElements.Remove(this);

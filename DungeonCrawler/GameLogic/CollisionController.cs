@@ -39,7 +39,7 @@ namespace DungeonCrawler.GameLogic
 
 
             /// <summary>
-            /// Checks if a collision occurred and takes action.
+            /// Checks if a collision occurred.
             /// </summary>
             static bool HasCollided(LevelElement elementThatMoved, LevelElement? item)
             {

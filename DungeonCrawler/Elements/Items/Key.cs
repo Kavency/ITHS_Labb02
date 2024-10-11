@@ -17,7 +17,7 @@ namespace DungeonCrawler.Elements.Items
             CollisionController.ClearOldPosition(this);
             LevelData.MapElements.Remove(this);
 
-            TextHandler.EventText("I found a key, to what I wonder.");
+            TextHandler.EventText("You found a key, to what you wonder.");
 
         }
     }

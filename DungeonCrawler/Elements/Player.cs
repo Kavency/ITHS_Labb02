@@ -18,8 +18,7 @@ namespace DungeonCrawler.Elements
 
         public Player()
         {
-            // PLayer: HP = 100, Attack = , Defence =
-            Dice attackDice = new(1, 6, 3);
+            Dice attackDice = new(2, 8, 3);
             Dice defenceDice = new(1, 6, 1);
 
             Name = NameProvider.GetRandomName();
@@ -67,7 +66,7 @@ namespace DungeonCrawler.Elements
                     this.Died();
                     break;
                 default:
-                    return;
+                    break;
             }
 
             if (CollisionController.CheckForCollision(directionMoved, this))
@@ -78,6 +77,8 @@ namespace DungeonCrawler.Elements
                     PickUpHandler.PickUpItem(this, CollisionController.collisionObject);
                 else if (CollisionController.collisionObject is Door door)
                     door.OpenDoor(this);
+                else if (CollisionController.collisionObject is ExitDoor)
+                    WinGame();
             }
             else
             {
@@ -118,9 +119,21 @@ namespace DungeonCrawler.Elements
         /// </summary>
         public void Died() 
         {
-            IsAlive = false;
-            Game.gameState = GameState.GameOver;
-            TextHandler.PlayerDiedText(this);
+            this.IsAlive = false;
+            Game.gameState = GameStates.GameOver;
+            TextHandler.PlayerDiedText();
+            Console.ReadKey();
+        }
+
+
+        /// <summary>
+        /// For the win!
+        /// </summary>
+        public void WinGame()
+        {
+            this.IsAlive = false;
+            Game.gameState = GameStates.GameOver;
+            TextHandler.PlayerWins();
             Console.ReadKey();
         }
     }

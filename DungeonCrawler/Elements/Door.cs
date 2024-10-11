@@ -18,11 +18,11 @@ namespace DungeonCrawler.Elements
                 CollisionController.ClearOldPosition(this);
                 LevelData.MapElements.Remove(this);
                 player.HasKey = false;
-                TextHandler.EventText("The key I found unlocks the door. What lays beyond?");
+                TextHandler.EventText("The key you found unlocks the door. What lays beyond?");
             }
             else
             {
-                TextHandler.EventText("Locked, I need a key to open this door.");
+                TextHandler.EventText("Locked, you need a key to open this door.");
             }
         }
     }

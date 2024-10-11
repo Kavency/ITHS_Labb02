@@ -6,7 +6,7 @@ namespace DungeonCrawler.GameLogic
 {
     internal static class DistanceController
     {
-        public static int VievRange { get; set; } = 2;
+        public static int VievRange { get; set; } = 3;
 
         /// <summary>
         /// Controls the view range.

@@ -19,8 +19,8 @@ namespace DungeonCrawler.GameLogic
         /// </summary>
         public async Task ViewRangeCountDown()
         {
-            await Task.Delay(20000);
-            DistanceController.VievRange = 2;
+            await Task.Delay(10000);
+            DistanceController.VievRange = 3;
         }
 
 

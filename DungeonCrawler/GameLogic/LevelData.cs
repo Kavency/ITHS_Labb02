@@ -83,6 +83,12 @@ namespace DungeonCrawler.GameLogic
                     SetElementPosition(healthPack);
                     healthPack.Draw();
                     break;
+                case 'e':
+                    ExitDoor exit = new();
+                    _elements.Add(exit);
+                    SetElementPosition(exit);
+                    exit.Draw();
+                    break;
                 default:
                     Console.Write((char)characterAsInt);
                     break;

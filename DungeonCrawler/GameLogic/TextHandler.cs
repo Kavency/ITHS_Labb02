@@ -4,7 +4,7 @@ namespace DungeonCrawler.GameLogic
 {
     static class TextHandler
     {
-        static private string _titleScreen =
+        private static string _titleScreen =
             "   ╔════════════════════════════════════════════════════════════════════════╗\r\n" +
             "   ║ ▀███▀▀▀██▄                                                             ║\r\n" +
             "   ║   ██    ▀██▄                                                           ║\r\n" +
@@ -30,8 +30,8 @@ namespace DungeonCrawler.GameLogic
             "                                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\r\n" +
             "\r\n" +
             "                  Press <Enter> to Start or <Esc> to Exit";
-        
-        static private string _header =
+
+        private static string _header =
             "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\r\n" +
             "▓▓░                                                                          ░▓▓\r\n" +
             "▓░                                                                            ░▓\r\n" +
@@ -42,15 +42,15 @@ namespace DungeonCrawler.GameLogic
             "▓▓░░                                                                        ░░▓▓\r\n" +
             "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\r\n";
 
-        static private string _nameBox =
+        private static string _nameBox =
             "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\r\n" +
             "██░                                            ░██\r\n" +
             "█       Gallant Knight, what be thy name?        █\r\n" +
-            "█  ->                                            █\r\n" +
+            "█    ->                                          █\r\n" +
             "██░                                            ░██\r\n" +
             "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
 
-        static private string _deathText =
+        private static string _deathText =
             "▓██   ██▓ ▒█████   █    ██      ▓█████▄   ██▓█████ ▓█████▄\r\n" +
             " ▒██  ██▒▒██▒  ██▒ ██  ▓██▒     ▒██▀ ██▌▒▓██▓█   ▀ ▒██▀ ██▌\r\n" +
             "  ▒██ ██░▒██░  ██▒▓██  ▒██░     ░██   █▌░▒██▒███   ░██   █▌\r\n" +
@@ -62,12 +62,47 @@ namespace DungeonCrawler.GameLogic
             " ░ ░         ░ ░     ░             ░      ░    ░      ░\r\n" +
             "\r\n                        > PRESS ANY KEY <";
 
-        static private string _clearRow = "                                                                          ";
-        public static string Title { get { return _titleScreen; } }
-        public static string Header { get { return _header; } }
-        public static string ClearRow { get { return _clearRow; } }
-        public static string NameBox { get { return _nameBox; } }
-        public static string DeathText { get { return _deathText; } }
+        private static string _winText =
+            "▓██   ██▓ ▒█████   █    ██     ▓█████  ██████   ▄████▄  ▄▄▄      ██▓███   ▓█████▓█████▄\r\n" +
+            " ▒██  ██▒▒██▒  ██▒ ██  ▓██▒    ▓█   ▀▒██    ▒  ▒██▀ ▀█ ▒████▄   ▓██░  ██  ▓█   ▀▒██▀ ██▌\r\n" +
+            "  ▒██ ██░▒██░  ██▒▓██  ▒██░    ▒███  ░ ▓██▄    ▒▓█    ▄▒██  ▀█▄ ▓██░ ██▓▒ ▒███  ░██   █▌\r\n" +
+            "  ░ ▐██▓░▒██   ██░▓▓█  ░██░    ▒▓█  ▄  ▒   ██▒▒▒▓▓▄ ▄██░██▄▄▄▄██▒██▄█▓▒ ▒ ▒▓█  ▄░▓█▄   ▌\r\n" +
+            "  ░ ██▒▓░░ ████▓▒░▒▒█████▓     ░▒████▒██████▒▒░▒ ▓███▀ ▒▓█   ▓██▒██▒ ░  ░▒░▒████░▒████▓\r\n" +
+            "   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ░░ ▒░ ▒ ▒▓▒ ▒ ░░░ ░▒ ▒  ░▒▒   ▓▒█▒▓▒░ ░  ░░░░ ▒░  ▒▒▓  ▒\r\n" +
+            " ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░      ░ ░  ░ ░▒  ░ ░   ░  ▒  ░ ░   ▒▒ ░▒ ░     ░ ░ ░   ░ ▒  ▒\r\n" +
+            " ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░        ░  ░  ░  ░   ░         ░   ▒  ░░           ░   ░ ░  ░\r\n" +
+            " ░ ░         ░ ░     ░            ░        ░   ░ ░           ░           ░   ░     ░\r\n" +
+            "\r\n                           > PRESS ANY KEY <";
+
+        private static string _introText =
+            "   ________________________________\r\n" +
+            " / \\                               \\\r\n" +
+            "|   |                               |\r\n" +
+            " \\_ |   You wake up in a damp,      |\r\n" +
+            "    |   dark cell. Looking around   |\r\n" +
+            "    |   you can see a dim light     |\r\n" +
+            "    |   coming from the celldoor.   |\r\n" +
+            "    |   It has been left slightly   |\r\n" +
+            "    |   ajar. This is your chance   |\r\n" +
+            "    |   to escape. Take it!         |\r\n" +
+            "    |                               |\r\n" +
+            "    |    W                          |\r\n" +
+            "    |   ASD - Controls the player.  |\r\n" +
+            "    |                               |\r\n" +
+            "    |   t - Torch, Helps you        |\r\n" +
+            "    |       see further but it      |\r\n" +
+            "    |       burns out over time.    |\r\n" +
+            "    |   + - Healt potion.           |\r\n" +
+            "    |   k - Key, unlocks doors.     |\r\n" +
+            "    |   d - Door, needs key.        |\r\n" +
+            "    |   e - The exit, your goal.    |\r\n" +
+            "    |                               |\r\n" +
+            "    |       > PRESS ANY KEY <       |\r\n" +
+            "    |   ____________________________|__\r\n" +
+            "    |  /                               /\r\n" +
+            "    \\_/______________________________/";
+
+        private static string _clearRow = "                                                                          ";
 
 
         /// <summary>
@@ -76,7 +111,7 @@ namespace DungeonCrawler.GameLogic
         public static void MainMenuText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(Title);
+            Console.WriteLine(_titleScreen);
         }
 
 
@@ -86,7 +121,7 @@ namespace DungeonCrawler.GameLogic
         public static void HeaderText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(Header);
+            Console.WriteLine(_header);
         }
 
 
@@ -96,8 +131,8 @@ namespace DungeonCrawler.GameLogic
         public static void NameBoxText()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(NameBox);
-            Console.SetCursorPosition(5, 3);
+            Console.WriteLine(_nameBox);
+            Console.SetCursorPosition(8, 3);
         }
 
 
@@ -108,7 +143,7 @@ namespace DungeonCrawler.GameLogic
         {
             Console.ForegroundColor = player.VisibleColour;
             Console.SetCursorPosition(5, 1);
-            Console.Write(ClearRow);
+            Console.Write(_clearRow);
             Console.SetCursorPosition(5, 1);
             Console.Write($"Name: {player.Name}\t\tHealth: {player.Health}");
         }
@@ -134,7 +169,7 @@ namespace DungeonCrawler.GameLogic
             if (!isCounterAttacking)
             {
                 SetColourAndPositionOfCursor();
-                
+
                 if (defender.Health <= 0)
                     Console.WriteLine($"{defender} died in the most horrible of ways.");
                 else
@@ -155,13 +190,35 @@ namespace DungeonCrawler.GameLogic
 
 
         /// <summary>
-        /// :´(
+        /// Shows the instructions text.
         /// </summary>
-        public static void PlayerDiedText(Player player)
+        public static void IntroText()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(DeathText);
+            Console.WriteLine(_introText);
+        }
+
+
+        /// <summary>
+        /// :´(
+        /// </summary>
+        public static void PlayerDiedText()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(_deathText);
+        }
+
+
+        /// <summary>
+        /// :-D
+        /// </summary>
+        public static void PlayerWins()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(_winText);
         }
 
 
@@ -172,7 +229,7 @@ namespace DungeonCrawler.GameLogic
         public static void SetColourAndPositionOfCursor(int rowOffset = 0)
         {
             Console.SetCursorPosition(4, 3 + rowOffset);
-            Console.Write(ClearRow);
+            Console.Write(_clearRow);
             Console.SetCursorPosition(4, 3 + rowOffset);
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -182,7 +239,7 @@ namespace DungeonCrawler.GameLogic
         /// <summary>
         /// Starts a timer for displaying text in the header.
         /// </summary>
-        public static void StartTextTimeOut(int seconds = 7)
+        public static void StartTextTimeOut(int seconds = 4)
         {
             TimeOut timeout = new();
             timeout.TextCountDown(seconds);
@@ -194,12 +251,12 @@ namespace DungeonCrawler.GameLogic
         /// </summary>
         public static void ClearEventText()
         {
+            Console.SetCursorPosition(4, 3);
+            Console.Write(_clearRow);
             Console.SetCursorPosition(4, 4);
-            Console.Write(ClearRow);
+            Console.Write(_clearRow);
             Console.SetCursorPosition(4, 5);
-            Console.Write(ClearRow);
-            Console.SetCursorPosition(4, 6);
-            Console.Write(ClearRow);
+            Console.Write(_clearRow);
         }
     }
 }
