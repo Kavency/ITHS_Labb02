@@ -1,6 +1,6 @@
 ﻿namespace DungeonCrawler.GameLogic
 {
-    internal enum GameState
+    internal enum GameStates
     {
         PlayerTurn,
         EnemyTurn,
