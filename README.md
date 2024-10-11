@@ -1,5 +1,7 @@
 # ITHS_Labb02
 ## Dungeon Crawler Deluxe
+Mission.... Create a simple Dungeon Crawler console game. Enjoy!
+
 
 ### För godkänt:
 - [x] Appen ska vara kompatibel med, och kunna läsa in filen “Level1.txt”.
