@@ -83,20 +83,20 @@ namespace DungeonCrawler.GameLogic
         /// </summary>
         private static void ProcessObject(LevelElement element)
         {
-            AddToList(element);
-            SetElementPosition(element);
-            DrawToScreen(element);
+            AddToList();
+            SetElementPosition();
+            DrawToScreen();
 
 
-            void AddToList(LevelElement element)
+            void AddToList()
             {
                 _elements.Add(element);
             }
-            void SetElementPosition(LevelElement element)
+            void SetElementPosition()
             {
                 (element.XPosition, element.YPosition) = Console.GetCursorPosition();
             }
-            void DrawToScreen(LevelElement element)
+            void DrawToScreen()
             {
                 if (element is Player)
                     Game.player.Draw();
